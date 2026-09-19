@@ -17,7 +17,7 @@ def centreVertices : List Vertex := [0, 1, 2]
 def centreTriangle : Finset Vertex := centreVertices.toFinset
 
 theorem centreTriangle_card : centreTriangle.card = 3 := by
-  native_decide
+  decide
 
 /-- Class I: 3+3+3 branch hitting sets, hence size 9. -/
 def lowerBoundCandidateClassI : List (Finset Vertex) :=
@@ -57,25 +57,25 @@ def lowerBoundCandidates : List (Finset Vertex) :=
 
 theorem lowerBoundCandidateClassI_length :
     lowerBoundCandidateClassI.length = 1728 := by
-  native_decide
+  decide
 
 theorem lowerBoundCandidateClassII_length :
     lowerBoundCandidateClassII.length = 5184 := by
-  native_decide
+  decide
 
 theorem lowerBoundCandidateClassIII_length :
     lowerBoundCandidateClassIII.length = 10800 := by
-  native_decide
+  decide
 
 /-- The source reduction generates exactly 17,712 candidate occurrences. -/
 theorem lowerBoundCandidates_length :
     lowerBoundCandidates.length = 17712 := by
-  native_decide
+  decide
 
 /-- The 17,712 generated candidate sets are pairwise distinct. -/
 theorem lowerBoundCandidates_nodup :
     lowerBoundCandidates.Nodup := by
-  native_decide
+  decide
 
 private theorem candidateClassI_mem
     {A B C : Finset Vertex}
@@ -142,28 +142,28 @@ private theorem candidateClassIII_mem_candidates {S : Finset Vertex}
   exact Or.inr h
 
 private theorem branch0_branch1_disjoint : Disjoint branch0 branch1 := by
-  native_decide
+  decide
 
 private theorem branch0_branch2_disjoint : Disjoint branch0 branch2 := by
-  native_decide
+  decide
 
 private theorem branch1_branch2_disjoint : Disjoint branch1 branch2 := by
-  native_decide
+  decide
 
 private theorem branch0_centre_disjoint : Disjoint branch0 centreTriangle := by
-  native_decide
+  decide
 
 private theorem branch1_centre_disjoint : Disjoint branch1 centreTriangle := by
-  native_decide
+  decide
 
 private theorem branch2_centre_disjoint : Disjoint branch2 centreTriangle := by
-  native_decide
+  decide
 
 /-- The centre and the three branches partition all 24 vertices. -/
 theorem centre_branches_partition :
     centreTriangle ∪ branch0 ∪ branch1 ∪ branch2 =
       (Finset.univ : Finset Vertex) := by
-  native_decide
+  decide
 
 private theorem restrict_disjoint {S A B : Finset Vertex}
     (h : Disjoint A B) :
