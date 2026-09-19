@@ -69,14 +69,14 @@ theorem ForceStep.disjoint_fort_preserved [DecidableEq V]
   · subst x
     have huNotF : u ∉ F := by
       intro huF
-      exact hdisj u huBlue huF
+      exact hdisj huBlue huF
     rcases hF u huNotF v hxF huv with ⟨w, hwF, huw, hwne⟩
     have hwWhite : w ∉ blue := by
       intro hwBlue
-      exact hdisj w hwBlue hwF
+      exact hdisj hwBlue hwF
     have hwEq : w = v := huniq w hwWhite huw
     exact hwne hwEq
-  · exact hdisj x hxblue hxF
+  · exact hdisj hxblue hxF
 
 /-- Disjointness from a fort is invariant under any finite forcing sequence. -/
 theorem reflTransGen_disjoint_fort_preserved [DecidableEq V]
