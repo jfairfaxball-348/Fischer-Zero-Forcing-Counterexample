@@ -57,25 +57,25 @@ def lowerBoundCandidates : List (Finset Vertex) :=
 
 theorem lowerBoundCandidateClassI_length :
     lowerBoundCandidateClassI.length = 1728 := by
-  decide
+  native_decide
 
 theorem lowerBoundCandidateClassII_length :
     lowerBoundCandidateClassII.length = 5184 := by
-  decide
+  native_decide
 
 theorem lowerBoundCandidateClassIII_length :
     lowerBoundCandidateClassIII.length = 10800 := by
-  decide
+  native_decide
 
 /-- The source reduction generates exactly 17,712 candidate occurrences. -/
 theorem lowerBoundCandidates_length :
     lowerBoundCandidates.length = 17712 := by
-  decide
+  native_decide
 
 /-- The 17,712 generated candidate sets are pairwise distinct. -/
 theorem lowerBoundCandidates_nodup :
     lowerBoundCandidates.Nodup := by
-  decide
+  native_decide
 
 private theorem candidateClassI_mem
     {A B C : Finset Vertex}
