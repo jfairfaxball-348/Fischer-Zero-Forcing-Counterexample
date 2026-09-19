@@ -14,32 +14,23 @@ closure and derives the exact zero-forcing number.
 namespace FischerZeroForcing
 
 /--
-A list-local certificate saying that the deterministic closure of every listed
-candidate stops short of the full vertex set.
+A compact Boolean certificate saying that the deterministic closure of every
+listed candidate stops short of the full vertex set.
+
+Using a Boolean accumulator avoids constructing a 17,712-deep nested
+proposition during native evaluation while checking exactly the same exhaustive
+candidate family.
 -/
-def AllCandidatesFail : List (Finset Vertex) → Prop
-  | [] => True
+def AllCandidatesFailBool : List (Finset Vertex) → Bool
+  | [] => true
   | S :: rest =>
-      fischerForceClosure S ≠ (Finset.univ : Finset Vertex) ∧
-      AllCandidatesFail rest
+      decide (fischerForceClosure S ≠ (Finset.univ : Finset Vertex)) &&
+      AllCandidatesFailBool rest
 
-private instance allCandidatesFailDecidable
-    (candidates : List (Finset Vertex)) :
-    Decidable (AllCandidatesFail candidates) := by
-  induction candidates with
-  | nil =>
-      exact isTrue trivial
-  | cons S rest ih =>
-      letI : Decidable (AllCandidatesFail rest) := ih
-      change Decidable
-        (fischerForceClosure S ≠ (Finset.univ : Finset Vertex) ∧
-          AllCandidatesFail rest)
-      infer_instance
-
-/-- Membership extraction from the recursive finite failure certificate. -/
-theorem AllCandidatesFail.of_mem
+/-- Membership extraction from the recursive finite Boolean failure certificate. -/
+theorem AllCandidatesFailBool.of_mem
     {candidates : List (Finset Vertex)}
-    (hfail : AllCandidatesFail candidates)
+    (hfail : AllCandidatesFailBool candidates = true)
     {S : Finset Vertex}
     (hmem : S ∈ candidates) :
     fischerForceClosure S ≠ (Finset.univ : Finset Vertex) := by
@@ -47,22 +38,24 @@ theorem AllCandidatesFail.of_mem
   | nil =>
       simp at hmem
   | cons A rest ih =>
-      change
-        (fischerForceClosure A ≠ (Finset.univ : Finset Vertex) ∧
-          AllCandidatesFail rest) at hfail
-      rcases hfail with ⟨hA, hrest⟩
+      simp only [AllCandidatesFailBool] at hfail
+      have hparts :
+          decide
+              (fischerForceClosure A ≠ (Finset.univ : Finset Vertex)) = true ∧
+            AllCandidatesFailBool rest = true :=
+        Bool.and_eq_true_iff.mp hfail
       simp only [List.mem_cons] at hmem
       rcases hmem with hEq | hmem
       · subst S
-        exact hA
-      · exact ih hrest hmem
+        exact of_decide_eq_true hparts.1
+      · exact ih hparts.2 hmem
 
 /--
 The single finite computation for Fischer's lower-bound obstruction:
 all 17,712 already-generated candidates have non-full deterministic closure.
 -/
 theorem lowerBoundCandidates_closure_fail :
-    AllCandidatesFail lowerBoundCandidates := by
+    AllCandidatesFailBool lowerBoundCandidates = true := by
   native_decide
 
 /-- None of the 17,712 reduced candidates is a zero-forcing set. -/
@@ -71,7 +64,7 @@ theorem lowerBoundCandidates_not_zeroForcing :
   intro S hmem hZ
   have hfail :
       fischerForceClosure S ≠ (Finset.univ : Finset Vertex) :=
-    AllCandidatesFail.of_mem lowerBoundCandidates_closure_fail hmem
+    AllCandidatesFailBool.of_mem lowerBoundCandidates_closure_fail hmem
   exact hfail ((fischerForceClosure_eq_univ_iff S).2 hZ)
 
 /--
