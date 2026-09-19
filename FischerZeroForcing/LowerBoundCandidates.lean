@@ -83,7 +83,8 @@ private theorem candidateClassI_mem
     (hB : B ∈ branch1Size3HittingSets)
     (hC : C ∈ branch2Size3HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassI := by
-  simp [lowerBoundCandidateClassI, hA, hB, hC]
+  simp only [lowerBoundCandidateClassI, List.mem_flatMap, List.mem_map]
+  exact ⟨A, hA, B, hB, C, hC, rfl⟩
 
 private theorem candidateClassII_mem
     {A B C : Finset Vertex} {t : Vertex}
@@ -92,7 +93,8 @@ private theorem candidateClassII_mem
     (hC : C ∈ branch2Size3HittingSets)
     (ht : t ∈ centreVertices) :
     A ∪ B ∪ C ∪ {t} ∈ lowerBoundCandidateClassII := by
-  simp [lowerBoundCandidateClassII, hA, hB, hC, ht]
+  simp only [lowerBoundCandidateClassII, List.mem_flatMap, List.mem_map]
+  exact ⟨A, hA, B, hB, C, hC, t, ht, rfl⟩
 
 private theorem candidateClassIII0_mem
     {A B C : Finset Vertex}
@@ -100,7 +102,8 @@ private theorem candidateClassIII0_mem
     (hB : B ∈ branch1Size3HittingSets)
     (hC : C ∈ branch2Size3HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassIII := by
-  simp [lowerBoundCandidateClassIII, hA, hB, hC]
+  simp only [lowerBoundCandidateClassIII, List.mem_append, List.mem_flatMap, List.mem_map]
+  exact Or.inl ⟨A, hA, B, hB, C, hC, rfl⟩
 
 private theorem candidateClassIII1_mem
     {A B C : Finset Vertex}
@@ -108,7 +111,8 @@ private theorem candidateClassIII1_mem
     (hB : B ∈ branch1Size4HittingSets)
     (hC : C ∈ branch2Size3HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassIII := by
-  simp [lowerBoundCandidateClassIII, hA, hB, hC]
+  simp only [lowerBoundCandidateClassIII, List.mem_append, List.mem_flatMap, List.mem_map]
+  exact Or.inr (Or.inl ⟨A, hA, B, hB, C, hC, rfl⟩)
 
 private theorem candidateClassIII2_mem
     {A B C : Finset Vertex}
@@ -116,7 +120,26 @@ private theorem candidateClassIII2_mem
     (hB : B ∈ branch1Size3HittingSets)
     (hC : C ∈ branch2Size4HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassIII := by
-  simp [lowerBoundCandidateClassIII, hA, hB, hC]
+  simp only [lowerBoundCandidateClassIII, List.mem_append, List.mem_flatMap, List.mem_map]
+  exact Or.inr (Or.inr ⟨A, hA, B, hB, C, hC, rfl⟩)
+
+private theorem candidateClassI_mem_candidates {S : Finset Vertex}
+    (h : S ∈ lowerBoundCandidateClassI) :
+    S ∈ lowerBoundCandidates := by
+  simp only [lowerBoundCandidates, List.mem_append]
+  exact Or.inl h
+
+private theorem candidateClassII_mem_candidates {S : Finset Vertex}
+    (h : S ∈ lowerBoundCandidateClassII) :
+    S ∈ lowerBoundCandidates := by
+  simp only [lowerBoundCandidates, List.mem_append]
+  exact Or.inr (Or.inl h)
+
+private theorem candidateClassIII_mem_candidates {S : Finset Vertex}
+    (h : S ∈ lowerBoundCandidateClassIII) :
+    S ∈ lowerBoundCandidates := by
+  simp only [lowerBoundCandidates, List.mem_append]
+  exact Or.inr (Or.inr h)
 
 private theorem branch0_branch1_disjoint : Disjoint branch0 branch1 := by
   native_decide
@@ -229,10 +252,18 @@ private theorem card_partition (S : Finset Vertex) :
         (S ∩ centreTriangle) :=
     three_regions_disjoint_from_fourth
       branch0_centre_disjoint branch1_centre_disjoint branch2_centre_disjoint
-  rw [set_partition S,
-    Finset.card_union_of_disjoint h012c,
-    Finset.card_union_of_disjoint h012,
-    Finset.card_union_of_disjoint h01]
+  calc
+    S.card =
+        ((((S ∩ branch0) ∪ (S ∩ branch1)) ∪ (S ∩ branch2)) ∪
+          (S ∩ centreTriangle)).card :=
+      congrArg Finset.card (set_partition S)
+    _ =
+        (((S ∩ branch0).card + (S ∩ branch1).card) +
+          (S ∩ branch2).card) +
+          (S ∩ centreTriangle).card := by
+      rw [Finset.card_union_of_disjoint h012c,
+        Finset.card_union_of_disjoint h012,
+        Finset.card_union_of_disjoint h01]
 
 /--
 Every hypothetical zero-forcing set of cardinality at most ten is one of the
@@ -276,10 +307,11 @@ theorem zeroForcingSet_card_le_ten_mem_candidates
       candidateClassIII0_mem hA hB hC
     have hS :
         S = (S ∩ branch0) ∪ (S ∩ branch1) ∪ (S ∩ branch2) := by
-      rw [set_partition S, hcentre]
-      simp
+      have hpart := set_partition S
+      rw [hcentre] at hpart
+      simpa only [Finset.union_empty, Finset.union_assoc] using hpart
     rw [hS]
-    simp [lowerBoundCandidates, hmem]
+    exact candidateClassIII_mem_candidates hmem
 
   · have h3_0 : (S ∩ branch0).card = 3 := by omega
     by_cases h4_1 : (S ∩ branch1).card = 4
@@ -302,10 +334,11 @@ theorem zeroForcingSet_card_le_ten_mem_candidates
         candidateClassIII1_mem hA hB hC
       have hS :
           S = (S ∩ branch0) ∪ (S ∩ branch1) ∪ (S ∩ branch2) := by
-        rw [set_partition S, hcentre]
-        simp
+        have hpart := set_partition S
+        rw [hcentre] at hpart
+        simpa only [Finset.union_empty, Finset.union_assoc] using hpart
       rw [hS]
-      simp [lowerBoundCandidates, hmem]
+      exact candidateClassIII_mem_candidates hmem
 
     · have h3_1 : (S ∩ branch1).card = 3 := by omega
       by_cases h4_2 : (S ∩ branch2).card = 4
@@ -327,10 +360,11 @@ theorem zeroForcingSet_card_le_ten_mem_candidates
           candidateClassIII2_mem hA hB hC
         have hS :
             S = (S ∩ branch0) ∪ (S ∩ branch1) ∪ (S ∩ branch2) := by
-          rw [set_partition S, hcentre]
-          simp
+          have hpart := set_partition S
+          rw [hcentre] at hpart
+          simpa only [Finset.union_empty, Finset.union_assoc] using hpart
         rw [hS]
-        simp [lowerBoundCandidates, hmem]
+        exact candidateClassIII_mem_candidates hmem
 
       · have h3_2 : (S ∩ branch2).card = 3 := by omega
         have hA :
@@ -354,10 +388,11 @@ theorem zeroForcingSet_card_le_ten_mem_candidates
             candidateClassI_mem hA hB hC
           have hS :
               S = (S ∩ branch0) ∪ (S ∩ branch1) ∪ (S ∩ branch2) := by
-            rw [set_partition S, hcentre]
-            simp
+            have hpart := set_partition S
+            rw [hcentre] at hpart
+            simpa only [Finset.union_empty, Finset.union_assoc] using hpart
           rw [hS]
-          simp [lowerBoundCandidates, hmem]
+          exact candidateClassI_mem_candidates hmem
         · rcases Finset.card_eq_one.mp hc1 with ⟨t, hcentre⟩
           have htInter : t ∈ S ∩ centreTriangle := by
             rw [hcentre]
@@ -373,8 +408,10 @@ theorem zeroForcingSet_card_le_ten_mem_candidates
           have hS :
               S =
                 (S ∩ branch0) ∪ (S ∩ branch1) ∪ (S ∩ branch2) ∪ {t} := by
-            rw [set_partition S, hcentre]
+            have hpart := set_partition S
+            rw [hcentre] at hpart
+            simpa only [Finset.union_assoc] using hpart
           rw [hS]
-          simp [lowerBoundCandidates, hmem]
+          exact candidateClassII_mem_candidates hmem
 
 end FischerZeroForcing
