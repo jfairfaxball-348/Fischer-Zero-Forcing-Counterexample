@@ -47,6 +47,13 @@ symmetrized, loop-free relation induced by the explicit edge list above.
         ((u.val, v.val) ∈ fischerEdges ∨ (v.val, u.val) ∈ fischerEdges) := by
   rfl
 
+instance fischerGraphDecidableAdj : DecidableRel fischerGraph.Adj := by
+  intro u v
+  change Decidable
+    (u ≠ v ∧
+      ((u.val, v.val) ∈ fischerEdges ∨ (v.val, u.val) ∈ fischerEdges))
+  infer_instance
+
 /-- The human-readable edge list contains exactly 30 entries. -/
 theorem fischerEdges_length : fischerEdges.length = 30 := by
   native_decide
@@ -120,6 +127,7 @@ theorem fischerGraph_connected : fischerGraph.Connected := by
 theorem fischerGraph_subcubic :
     ∀ v : Vertex, (fischerGraph.neighborSet v).ncard ≤ 3 := by
   intro v
+  rw [SimpleGraph.ncard_neighborSet]
   fin_cases v <;> native_decide
 
 end FischerZeroForcing
