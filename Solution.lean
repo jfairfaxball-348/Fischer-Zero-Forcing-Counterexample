@@ -3,8 +3,9 @@ import FischerZeroForcing.Main
 /-!
 # Fischer's zero-forcing counterexample: solution surface
 
-This file is a bootstrap placeholder. The theorem has the same intended type as
-the Challenge declaration, but the proof is not yet implemented.
+The project proof establishes the exact invariants for Fischer's explicit
+24-vertex connected subcubic graph and packages them into the advertised
+existential statement.
 -/
 
 namespace FischerZeroForcing
@@ -15,6 +16,6 @@ theorem main_result :
       (∀ v : Fin 24, (G.neighborSet v).ncard ≤ 3) ∧
       G.indepNum = 9 ∧
       zeroForcingNumber G = 11 := by
-  sorry
+  exact ⟨fischerGraph, fischerGraph_counterexample⟩
 
 end FischerZeroForcing
