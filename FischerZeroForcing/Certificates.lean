@@ -107,67 +107,93 @@ private def zeroForcingBlue13 : Finset Vertex := insert 23 zeroForcingBlue12
 private theorem zeroForcingStep_5_6 :
     ForceStep fischerGraph zeroForcingWitness zeroForcingBlue1 := by
   refine ⟨5, 6, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_4_3 :
     ForceStep fischerGraph zeroForcingBlue1 zeroForcingBlue2 := by
   refine ⟨4, 3, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_3_0 :
     ForceStep fischerGraph zeroForcingBlue2 zeroForcingBlue3 := by
   refine ⟨3, 0, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_7_9 :
     ForceStep fischerGraph zeroForcingBlue3 zeroForcingBlue4 := by
   refine ⟨7, 9, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_12_13 :
     ForceStep fischerGraph zeroForcingBlue4 zeroForcingBlue5 := by
   refine ⟨12, 13, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_11_10 :
     ForceStep fischerGraph zeroForcingBlue5 zeroForcingBlue6 := by
   refine ⟨11, 10, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_10_1 :
     ForceStep fischerGraph zeroForcingBlue6 zeroForcingBlue7 := by
   refine ⟨10, 1, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_0_2 :
     ForceStep fischerGraph zeroForcingBlue7 zeroForcingBlue8 := by
   refine ⟨0, 2, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_2_17 :
     ForceStep fischerGraph zeroForcingBlue8 zeroForcingBlue9 := by
   refine ⟨2, 17, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_14_16 :
     ForceStep fischerGraph zeroForcingBlue9 zeroForcingBlue10 := by
   refine ⟨14, 16, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_17_21 :
     ForceStep fischerGraph zeroForcingBlue10 zeroForcingBlue11 := by
   refine ⟨17, 21, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_18_20 :
     ForceStep fischerGraph zeroForcingBlue11 zeroForcingBlue12 := by
   refine ⟨18, 20, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingStep_21_23 :
     ForceStep fischerGraph zeroForcingBlue12 zeroForcingBlue13 := by
   refine ⟨21, 23, ?_, rfl⟩
-  native_decide
+  refine ⟨by decide, by decide, by decide, ?_⟩
+  intro w
+  fin_cases w <;> decide
 
 private theorem zeroForcingBlue13_eq_univ :
     zeroForcingBlue13 = (Finset.univ : Finset Vertex) := by
@@ -182,6 +208,7 @@ The proof is exactly the source/checker sequence
 -/
 theorem zeroForcingWitness_isZeroForcing :
     IsZeroForcingSet fischerGraph zeroForcingWitness := by
+  unfold IsZeroForcingSet
   have h0 : Relation.ReflTransGen (ForceStep fischerGraph)
       zeroForcingWitness zeroForcingWitness :=
     Relation.ReflTransGen.refl
