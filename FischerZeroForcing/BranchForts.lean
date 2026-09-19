@@ -56,6 +56,18 @@ def HitsForts (S : Finset Vertex) : List (Finset Vertex) → Prop
   | [] => True
   | F :: forts => (S ∩ F).Nonempty ∧ HitsForts S forts
 
+/-- Constructive decidability for the finite list-local hitting predicate. -/
+private instance hitsFortsDecidable
+    (S : Finset Vertex) (forts : List (Finset Vertex)) :
+    Decidable (HitsForts S forts) := by
+  induction forts with
+  | nil =>
+      exact isTrue trivial
+  | cons F forts ih =>
+      letI : Decidable (HitsForts S forts) := ih
+      change Decidable ((S ∩ F).Nonempty ∧ HitsForts S forts)
+      infer_instance
+
 /-- Membership formulation of `HitsForts`. -/
 theorem hitsForts_iff {S : Finset Vertex} {forts : List (Finset Vertex)} :
     HitsForts S forts ↔ ∀ F ∈ forts, (S ∩ F).Nonempty := by
@@ -64,6 +76,12 @@ theorem hitsForts_iff {S : Finset Vertex} {forts : List (Finset Vertex)} :
       simp [HitsForts]
   | cons F forts ih =>
       simp [HitsForts, ih]
+
+/-- Constructive decidability of fort membership for Fischer's finite graph. -/
+private instance fischerFortDecidable (F : Finset Vertex) :
+    Decidable (IsFort fischerGraph F) := by
+  unfold IsFort
+  infer_instance
 
 /--
 Complete branch-specific fort enumeration.
