@@ -3,15 +3,20 @@
 
 This script intentionally does not use Lean or a graph-theory package.
 It reconstructs H = G(K3) from the construction in arXiv:2607.23664v1,
-independently decodes the published graph6 string, and checks the finite
-claims used by the formalization plan.
+independently decodes the published graph6 string, parses the edge list that
+the Lean source actually contains, and checks the finite claims used by the
+formalization plan.
 """
 
 from functools import lru_cache
 from itertools import combinations, product
+from pathlib import Path
+import re
 
-GRAPH6 = "W{CGW_@?Y??@?@?@_@??@??K_????G??C??B??@????_??B"
+ROOT = Path(__file__).resolve().parents[1]
+PUBLISHED_GRAPH6 = "W{CGW_@?Y??@?@?@_@??@??K_????G??C??B??@????_??B"
 
+# Canonical labels induced by the published construction and graph6 ordering.
 CONSTRUCTION_EDGES = {
     (0, 1), (0, 2), (1, 2),
     (0, 3),
@@ -58,6 +63,21 @@ def decode_graph6(s: str):
                 edges.add((i, j))
             k += 1
     return n, edges
+
+
+def lean_edge_list():
+    """Read exactly the tuple list assigned to fischerEdges in the Lean source."""
+    source = (ROOT / "FischerZeroForcing" / "FischerGraph.lean").read_text()
+    try:
+        block = source.split("def fischerEdges", 1)[1].split(
+            "private def fischerEdgeRel", 1
+        )[0]
+    except IndexError as exc:
+        raise AssertionError("Could not locate fischerEdges in FischerGraph.lean") from exc
+    pairs = {(int(a), int(b)) for a, b in re.findall(r"\((\d+),\s*(\d+)\)", block)}
+    if not pairs:
+        raise AssertionError("Parsed no edges from FischerGraph.lean")
+    return pairs
 
 
 def adjacency(n, edges):
@@ -189,13 +209,19 @@ def zero_forcing_lower_bound_via_forts(adj):
 
 
 def main():
-    n, g6_edges = decode_graph6(GRAPH6)
+    graph6_file = (ROOT / "reference" / "H24.g6").read_text().strip()
+    assert graph6_file == PUBLISHED_GRAPH6
+
+    n, g6_edges = decode_graph6(graph6_file)
     assert n == 24
     assert g6_edges == CONSTRUCTION_EDGES
 
-    adj = adjacency(n, CONSTRUCTION_EDGES)
+    lean_edges = lean_edge_list()
+    assert lean_edges == g6_edges
+
+    adj = adjacency(n, lean_edges)
     degrees = sorted(map(len, adj))
-    assert len(CONSTRUCTION_EDGES) == 30
+    assert len(lean_edges) == 30
     assert degrees == [2] * 12 + [3] * 12
     assert max(degrees) == 3
     assert connected(adj)
@@ -211,7 +237,9 @@ def main():
 
     fort_data, candidates = zero_forcing_lower_bound_via_forts(adj)
 
-    print("graph6 matches construction: yes")
+    print("reference graph6 matches published string: yes")
+    print("graph6 matches source construction: yes")
+    print("Lean edge list matches graph6: yes")
     print("vertices: 24")
     print("edges: 30")
     print("degree multiset: 12x2, 12x3")

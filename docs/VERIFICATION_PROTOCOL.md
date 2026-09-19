@@ -11,7 +11,7 @@ lake update
 lake build
 ```
 
-must succeed under the committed `lean-toolchain` and pinned Mathlib release/manifest.
+must succeed under the committed `lean-toolchain` and pinned Mathlib manifest.
 
 Before Palomar submission:
 
@@ -32,16 +32,17 @@ python3 verification/check_fischer_h.py
 
 This checker deliberately does not import Lean or a graph package. It:
 
-- reconstructs H from Fischer's G(K3) construction;
-- independently decodes the source graph6 string;
-- requires the two edge sets to match exactly;
+- checks `reference/H24.g6` against the graph6 string transcribed from Fischer;
+- independently decodes that graph6 string;
+- reconstructs H from Fischer's G(K3) construction and requires the edge sets to agree;
+- parses the actual `fischerEdges` tuple list in `FischerGraph.lean` and requires it to agree with graph6;
 - checks 24 vertices, 30 edges, connectivity and the degree multiset;
 - checks the explicit independent 9-set and computes the exact independence number;
 - checks the explicit 11-set and records a forcing sequence;
 - enumerates branch forts and reproduces t=12, h=3, m3=12 and m4=25;
 - constructs exactly the source's 17,712 lower-bound candidates and confirms none forces.
 
-This layer is intended to catch transcription errors, label mismatches, witness mistakes, and incomplete finite-search assumptions independently of the Lean encoding.
+This layer is intended to catch edge-list transcription errors, label mismatches, accidental edits to the source graph, witness mistakes, and incomplete finite-search assumptions independently of Lean's kernel checking.
 
 ## Audit rule
 
