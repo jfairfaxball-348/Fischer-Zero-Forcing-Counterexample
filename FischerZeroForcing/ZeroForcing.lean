@@ -37,4 +37,11 @@ noncomputable def zeroForcingNumber [Fintype V] [DecidableEq V]
     (G : SimpleGraph V) : ℕ :=
   sInf {n : ℕ | ∃ blue : Finset V, blue.card = n ∧ IsZeroForcingSet G blue}
 
+/-- Any explicit zero-forcing set gives the corresponding upper bound. -/
+theorem zeroForcingNumber_le_card [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) {blue : Finset V} (h : IsZeroForcingSet G blue) :
+    zeroForcingNumber G ≤ blue.card := by
+  unfold zeroForcingNumber
+  exact Nat.sInf_le ⟨blue, rfl, h⟩
+
 end FischerZeroForcing
