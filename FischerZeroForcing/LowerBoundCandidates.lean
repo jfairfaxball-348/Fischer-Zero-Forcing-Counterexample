@@ -103,7 +103,7 @@ private theorem candidateClassIII0_mem
     (hC : C ∈ branch2Size3HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassIII := by
   simp only [lowerBoundCandidateClassIII, List.mem_append, List.mem_flatMap, List.mem_map]
-  exact Or.inl ⟨A, hA, B, hB, C, hC, rfl⟩
+  exact Or.inl (Or.inl ⟨A, hA, B, hB, C, hC, rfl⟩)
 
 private theorem candidateClassIII1_mem
     {A B C : Finset Vertex}
@@ -112,7 +112,7 @@ private theorem candidateClassIII1_mem
     (hC : C ∈ branch2Size3HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassIII := by
   simp only [lowerBoundCandidateClassIII, List.mem_append, List.mem_flatMap, List.mem_map]
-  exact Or.inr (Or.inl ⟨A, hA, B, hB, C, hC, rfl⟩)
+  exact Or.inl (Or.inr ⟨A, hA, B, hB, C, hC, rfl⟩)
 
 private theorem candidateClassIII2_mem
     {A B C : Finset Vertex}
@@ -121,25 +121,25 @@ private theorem candidateClassIII2_mem
     (hC : C ∈ branch2Size4HittingSets) :
     A ∪ B ∪ C ∈ lowerBoundCandidateClassIII := by
   simp only [lowerBoundCandidateClassIII, List.mem_append, List.mem_flatMap, List.mem_map]
-  exact Or.inr (Or.inr ⟨A, hA, B, hB, C, hC, rfl⟩)
+  exact Or.inr ⟨A, hA, B, hB, C, hC, rfl⟩
 
 private theorem candidateClassI_mem_candidates {S : Finset Vertex}
     (h : S ∈ lowerBoundCandidateClassI) :
     S ∈ lowerBoundCandidates := by
   simp only [lowerBoundCandidates, List.mem_append]
-  exact Or.inl h
+  exact Or.inl (Or.inl h)
 
 private theorem candidateClassII_mem_candidates {S : Finset Vertex}
     (h : S ∈ lowerBoundCandidateClassII) :
     S ∈ lowerBoundCandidates := by
   simp only [lowerBoundCandidates, List.mem_append]
-  exact Or.inr (Or.inl h)
+  exact Or.inl (Or.inr h)
 
 private theorem candidateClassIII_mem_candidates {S : Finset Vertex}
     (h : S ∈ lowerBoundCandidateClassIII) :
     S ∈ lowerBoundCandidates := by
   simp only [lowerBoundCandidates, List.mem_append]
-  exact Or.inr (Or.inr h)
+  exact Or.inr h
 
 private theorem branch0_branch1_disjoint : Disjoint branch0 branch1 := by
   native_decide
