@@ -127,7 +127,7 @@ theorem fischerGraph_connected : fischerGraph.Connected := by
 theorem fischerGraph_subcubic :
     ∀ v : Vertex, (fischerGraph.neighborSet v).ncard ≤ 3 := by
   intro v
-  rw [SimpleGraph.ncard_neighborSet]
+  rw [Set.ncard_eq_toFinset_card']
   fin_cases v <;> native_decide
 
 end FischerZeroForcing
