@@ -175,6 +175,7 @@ private instance allTerminalFortsValidDecidable :
       infer_instance
 
 /-- Every one of the 112 explicit obstruction sets is a nonempty fort. -/
+set_option maxRecDepth 100000 maxHeartbeats 0 in
 theorem lowerBoundTerminalForts_valid :
     AllTerminalFortsValid lowerBoundTerminalForts := by
   decide
