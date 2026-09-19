@@ -2,3 +2,4 @@ import FischerZeroForcing.Certificates
 import FischerZeroForcing.BranchForts
 import FischerZeroForcing.BranchCertificates
 import FischerZeroForcing.LowerBoundCandidates
+import FischerZeroForcing.ZeroForcingClosure
