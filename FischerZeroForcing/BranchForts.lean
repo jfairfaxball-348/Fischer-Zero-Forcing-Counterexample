@@ -35,15 +35,15 @@ def branch0Forts : List (Finset Vertex) :=
 
 /-- Branch 0 contains exactly seven vertices. -/
 theorem branch0_card : branch0.card = 7 := by
-  native_decide
+  decide
 
 /-- The explicit branch-0 fort certificate has twelve entries. -/
 theorem branch0Forts_length : branch0Forts.length = 12 := by
-  native_decide
+  decide
 
 /-- The twelve explicit branch-0 forts are pairwise distinct. -/
 theorem branch0Forts_nodup : branch0Forts.Nodup := by
-  native_decide
+  decide
 
 /--
 `S` hits a finite fort family when it has a vertex in every listed fort.
@@ -93,7 +93,7 @@ the finite completeness certificate used below.
 theorem branch0_fort_filter_eq :
     branch0.powerset.filter (fun F => F.Nonempty ∧ IsFort fischerGraph F) =
       branch0Forts.toFinset := by
-  native_decide
+  decide
 
 /-- Every explicitly listed branch-0 set is a nonempty fort. -/
 theorem branch0Forts_areForts :
@@ -155,7 +155,7 @@ theorem HitsForts.inter_region {S region : Finset Vertex}
 private theorem branch0_no_small_hitting_set :
     branch0.powerset.filter
         (fun S => S.card < 3 ∧ HitsForts S branch0Forts) = ∅ := by
-  native_decide
+  decide
 
 /-- Any subset of branch 0 hitting every branch-0 fort has at least three vertices. -/
 theorem branch0_hittingSet_card_ge_three {S : Finset Vertex}
@@ -199,18 +199,18 @@ def branch0Size3HittingSets : List (Finset Vertex) :=
 
 /-- The explicit size-three hitting-set certificate has twelve entries. -/
 theorem branch0Size3HittingSets_length : branch0Size3HittingSets.length = 12 := by
-  native_decide
+  decide
 
 /-- The twelve explicit size-three hitting sets are pairwise distinct. -/
 theorem branch0Size3HittingSets_nodup : branch0Size3HittingSets.Nodup := by
-  native_decide
+  decide
 
 /-- Complete finite enumeration of the size-three branch-0 hitting sets. -/
 theorem branch0_size3_hitting_filter_eq :
     branch0.powerset.filter
         (fun S => S.card = 3 ∧ HitsForts S branch0Forts) =
       branch0Size3HittingSets.toFinset := by
-  native_decide
+  decide
 
 /-- A three-vertex branch-0 subset hits all forts exactly when it is on the explicit list. -/
 theorem branch0_size3_hitting_iff {S : Finset Vertex}
