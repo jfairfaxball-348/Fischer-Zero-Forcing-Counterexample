@@ -68,8 +68,8 @@ theorem fischerGraph_independentSet_card_le (S : Finset Vertex)
 
 /-- Fischer's graph has independence number at most nine. -/
 theorem fischerGraph_indepNum_le : fischerGraph.indepNum ≤ 9 := by
-  obtain ⟨S, hS⟩ := (maximumIndepSet_exists (G := fischerGraph))
-  rw [← maximumIndepSet_card_eq_indepNum S hS]
+  obtain ⟨S, hS⟩ := (SimpleGraph.maximumIndepSet_exists (G := fischerGraph))
+  rw [← SimpleGraph.maximumIndepSet_card_eq_indepNum S hS]
   exact fischerGraph_independentSet_card_le S hS.isIndepSet
 
 /-- Fischer's explicit graph has independence number exactly nine. -/
