@@ -207,7 +207,7 @@ theorem mem_fischerForceTargets_iff {blue : Finset Vertex} {v : Vertex} :
     have hcard : (fischerWhiteNeighbors blue u).card = 1 := by
       rw [hwhite]
       simp
-    simp [hcard, hwhite]
+    simp [hwhite]
 
 /-- One deterministic closure round: add all targets currently forceable. -/
 def fischerForceRound (blue : Finset Vertex) : Finset Vertex :=
@@ -371,7 +371,7 @@ private theorem zeroForcing_imp_closureAux_eq_univ
       have hcard : blue.card = Fintype.card Vertex := by
         omega
       have hblue : blue = (Finset.univ : Finset Vertex) :=
-        (Finset.card_eq_iff_eq_univ).mp hcard
+        (Finset.card_eq_iff_eq_univ blue).mp hcard
       simpa [hblue]
   | succ n ih =>
       by_cases hblue : blue = (Finset.univ : Finset Vertex)
