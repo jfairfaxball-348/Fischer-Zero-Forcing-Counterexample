@@ -4,13 +4,14 @@
 
 This repository is a tightly scoped Lean 4 formalization project for Mikko Fischer's explicit 24-vertex counterexample to the zero-forcing-versus-independence conjecture for connected subcubic graphs.
 
-The target graph (H) is the graph denoted (G(K_3)) in Fischer's 2026 note. The source reports
+The target graph H is the graph denoted G(K3) in Fischer's 2026 note. The source reports:
 
-[
-|V(H)|=24,qquad \alpha(H)=9,qquad Z(H)=11,qquad \Delta(H)=3,
-]
+- |V(H)| = 24
+- alpha(H) = 9
+- Z(H) = 11
+- Delta(H) = 3
 
-so (Z(H)>\alpha(H)+1).
+Hence Z(H) > alpha(H) + 1.
 
 The underlying mathematical counterexample is Fischer's result. This repository's intended contribution is a faithful, auditable Lean formal verification and Palomar-ready packaging of that result.
 
@@ -46,11 +47,7 @@ The GitHub Actions workflow also runs the independent finite checker before the 
 
 ## Scope
 
-Version 1 is only the formal verification of Fischer's explicit 24-vertex connected subcubic counterexample, preferably with the stronger internal certificate
-
-[
-\alpha(H)=9,qquad Z(H)=11.
-]
+Version 1 is only the formal verification of Fischer's explicit 24-vertex connected subcubic counterexample, preferably with the stronger internal certificate alpha(H) = 9 and Z(H) = 11.
 
 Minimality, the 36-vertex cubic example, infinite families, a general-purpose zero-forcing library, and unrelated graph-theory research are out of scope.
 
