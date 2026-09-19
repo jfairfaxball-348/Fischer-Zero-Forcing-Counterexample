@@ -261,6 +261,7 @@ Exhaustive finite obstruction certificate: every one of the formally generated
 17,712 lower-bound candidates is disjoint from one of the 112 explicit
 nonempty forts.
 -/
+set_option maxRecDepth 100000 maxHeartbeats 0 in
 theorem lowerBoundCandidates_terminal_fort_coverage :
     AllCandidatesCoveredBool lowerBoundCandidates = true := by
   decide
