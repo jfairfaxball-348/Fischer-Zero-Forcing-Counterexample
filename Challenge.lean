@@ -42,7 +42,7 @@ There exists a connected simple graph on 24 vertices of maximum degree at most
 theorem main_result :
     ∃ G : SimpleGraph (Fin 24),
       G.Connected ∧
-      (∀ v : Fin 24, G.degree v ≤ 3) ∧
+      (∀ v : Fin 24, (G.neighborSet v).ncard ≤ 3) ∧
       G.indepNum = 9 ∧
       zeroForcingNumber G = 11 := by
   sorry
