@@ -32,6 +32,88 @@ def IsZeroForcingSet [Fintype V] [DecidableEq V]
     (G : SimpleGraph V) (blue : Finset V) : Prop :=
   Relation.ReflTransGen (ForceStep G) blue Finset.univ
 
+/--
+A fort is a set of vertices such that no vertex outside the set has exactly
+one neighbour in it.
+
+The formulation below is equivalent to the usual cardinality condition:
+whenever an outside vertex is adjacent to a vertex `v` of the fort, it has a
+second, distinct neighbour `w` in the fort. This form matches `CanForce`
+directly and remains suitable for finite certificate checking.
+-/
+def IsFort [DecidableEq V] (G : SimpleGraph V) (F : Finset V) : Prop :=
+  ∀ u : V, u ∉ F →
+    ∀ v : V, v ∈ F → G.Adj u v →
+      ∃ w : V, w ∈ F ∧ G.Adj u w ∧ w ≠ v
+
+/--
+A legal force cannot enter a fort that is completely white.
+
+If `blue` is disjoint from `F`, the forcing vertex `u` lies outside `F`.
+Were the newly forced vertex `v` in `F`, the fort property would provide a
+second neighbour `w ∈ F` of `u`. Since the whole fort is white, `w` is a
+white neighbour of `u`, contradicting the uniqueness clause in `CanForce`.
+-/
+theorem ForceStep.disjoint_fort_preserved [DecidableEq V]
+    {G : SimpleGraph V} {blue blue' F : Finset V}
+    (hF : IsFort G F)
+    (hdisj : Disjoint blue F)
+    (hstep : ForceStep G blue blue') :
+    Disjoint blue' F := by
+  rw [Finset.disjoint_left] at hdisj ⊢
+  intro x hxblue' hxF
+  rcases hstep with ⟨u, v, hforce, rfl⟩
+  rcases hforce with ⟨huBlue, _hvWhite, huv, huniq⟩
+  rw [Finset.mem_insert] at hxblue'
+  rcases hxblue' with hxeq | hxblue
+  · subst x
+    have huNotF : u ∉ F := by
+      intro huF
+      exact hdisj huBlue huF
+    rcases hF u huNotF v hxF huv with ⟨w, hwF, huw, hwne⟩
+    have hwWhite : w ∉ blue := by
+      intro hwBlue
+      exact hdisj hwBlue hwF
+    have hwEq : w = v := huniq w hwWhite huw
+    exact hwne hwEq
+  · exact hdisj hxblue hxF
+
+/-- Disjointness from a fort is invariant under any finite forcing sequence. -/
+theorem reflTransGen_disjoint_fort_preserved [DecidableEq V]
+    {G : SimpleGraph V} {blue blue' F : Finset V}
+    (hF : IsFort G F)
+    (hdisj : Disjoint blue F)
+    (hsteps : Relation.ReflTransGen (ForceStep G) blue blue') :
+    Disjoint blue' F := by
+  induction hsteps with
+  | refl =>
+      exact hdisj
+  | tail hsteps hstep ih =>
+      exact ForceStep.disjoint_fort_preserved hF ih hstep
+
+/--
+Every zero-forcing set intersects every nonempty fort.
+
+Otherwise the fort would remain completely white throughout the entire forcing
+sequence, contradicting that a zero-forcing sequence reaches `Finset.univ`.
+-/
+theorem IsZeroForcingSet.intersects_fort [Fintype V] [DecidableEq V]
+    {G : SimpleGraph V} {blue F : Finset V}
+    (hZ : IsZeroForcingSet G blue)
+    (hF : IsFort G F)
+    (hne : F.Nonempty) :
+    (blue ∩ F).Nonempty := by
+  by_contra hnot
+  have hdisj : Disjoint blue F := by
+    rw [Finset.disjoint_left]
+    intro v hvBlue hvF
+    exact hnot ⟨v, by simp [hvBlue, hvF]⟩
+  unfold IsZeroForcingSet at hZ
+  have hfinal : Disjoint (Finset.univ : Finset V) F :=
+    reflTransGen_disjoint_fort_preserved hF hdisj hZ
+  rcases hne with ⟨v, hvF⟩
+  exact Finset.disjoint_left.mp hfinal (Finset.mem_univ v) hvF
+
 /-- The minimum cardinality of a zero-forcing set. -/
 noncomputable def zeroForcingNumber [Fintype V] [DecidableEq V]
     (G : SimpleGraph V) : ℕ :=
