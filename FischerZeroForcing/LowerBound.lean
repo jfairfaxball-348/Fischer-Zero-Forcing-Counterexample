@@ -149,7 +149,7 @@ def lowerBoundTerminalForts : List (Finset Vertex) := [
 
 theorem lowerBoundTerminalForts_length :
     lowerBoundTerminalForts.length = 112 := by
-  native_decide
+  decide
 
 /-- List-local proposition that every supplied obstruction is a nonempty fort. -/
 def AllTerminalFortsValid : List (Finset Vertex) → Prop
@@ -177,7 +177,7 @@ private instance allTerminalFortsValidDecidable :
 /-- Every one of the 112 explicit obstruction sets is a nonempty fort. -/
 theorem lowerBoundTerminalForts_valid :
     AllTerminalFortsValid lowerBoundTerminalForts := by
-  native_decide
+  decide
 
 /-- Extract one fort's validity from the list-local validity certificate. -/
 theorem AllTerminalFortsValid.of_mem
@@ -263,7 +263,7 @@ nonempty forts.
 -/
 theorem lowerBoundCandidates_terminal_fort_coverage :
     AllCandidatesCoveredBool lowerBoundCandidates = true := by
-  native_decide
+  decide
 
 /-- None of the 17,712 reduced candidates is a zero-forcing set. -/
 theorem lowerBoundCandidates_not_zeroForcing :
