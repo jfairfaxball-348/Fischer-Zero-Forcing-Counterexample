@@ -181,9 +181,6 @@ The certificate is deliberately elaborated one fort at a time.  This is the
 same kernel-checked finite proof as a single `decide`, but avoids forcing the
 kernel to normalize one very large nested decision in a single reduction.
 -/
-set_option maxRecDepth 100000
-set_option maxHeartbeats 0
-
 theorem lowerBoundTerminalForts_valid :
     AllTerminalFortsValid lowerBoundTerminalForts := by
   refine ⟨by decide, ?_⟩
@@ -1139,14 +1136,6 @@ def terminalFortCertificate (i : Nat) : Option (TerminalFortSelection i) :=
                 else
                   none
 
-/--
-For each of the 17,712 candidates, this list gives the zero-based index of one
-of the 112 terminal forts disjoint from that candidate.
-
-The indices are certificate data only: their provenance is not trusted.  Lean
-checks every candidate/index pair below, and the selector theorem proves that
-each selected obstruction really belongs to `lowerBoundTerminalForts`.
--/
 /--
 Bounded structural candidate blocks used by the kernel-only coverage certificate.
 
@@ -2647,7 +2636,7 @@ private theorem lowerBoundClassIBlock_covered
     (hA : A ∈ branch0Size3HittingSets)
     (hS : S ∈ lowerBoundClassIBlock A) :
     ∃ F ∈ lowerBoundTerminalForts, Disjoint S F := by
-  simp only [branch0Size3HittingSets, List.mem_cons, List.mem_singleton] at hA
+  simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
     exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageI00_valid hS
@@ -2679,7 +2668,7 @@ private theorem lowerBoundClassIIBlock_covered
     (hA : A ∈ branch0Size3HittingSets)
     (hS : S ∈ lowerBoundClassIIBlock A) :
     ∃ F ∈ lowerBoundTerminalForts, Disjoint S F := by
-  simp only [branch0Size3HittingSets, List.mem_cons, List.mem_singleton] at hA
+  simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
     exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII00_valid hS
@@ -2711,7 +2700,7 @@ private theorem lowerBoundClassIII0Block_covered
     (hA : A ∈ branch0Size4HittingSets)
     (hS : S ∈ lowerBoundClassIII0Block A) :
     ∃ F ∈ lowerBoundTerminalForts, Disjoint S F := by
-  simp only [branch0Size4HittingSets, List.mem_cons, List.mem_singleton] at hA
+  simp only [branch0Size4HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
     exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII0_00_valid hS
@@ -2769,7 +2758,7 @@ private theorem lowerBoundClassIII1Block_covered
     (hA : A ∈ branch0Size3HittingSets)
     (hS : S ∈ lowerBoundClassIII1Block A) :
     ∃ F ∈ lowerBoundTerminalForts, Disjoint S F := by
-  simp only [branch0Size3HittingSets, List.mem_cons, List.mem_singleton] at hA
+  simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
     exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_00_valid hS
@@ -2801,7 +2790,7 @@ private theorem lowerBoundClassIII2Block_covered
     (hA : A ∈ branch0Size3HittingSets)
     (hS : S ∈ lowerBoundClassIII2Block A) :
     ∃ F ∈ lowerBoundTerminalForts, Disjoint S F := by
-  simp only [branch0Size3HittingSets, List.mem_cons, List.mem_singleton] at hA
+  simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
     exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_00_valid hS
@@ -2855,11 +2844,12 @@ private theorem lowerBoundCandidateClassIII_terminal_fort_coverage
     (branch0Size3HittingSets.flatMap lowerBoundClassIII1Block) ++
     (branch0Size3HittingSets.flatMap lowerBoundClassIII2Block) at hmem
   simp only [List.mem_append, List.mem_flatMap] at hmem
-  rcases hmem with h0 | h1 | h2
-  · rcases h0 with ⟨A, hA, hS⟩
-    exact lowerBoundClassIII0Block_covered hA hS
-  · rcases h1 with ⟨A, hA, hS⟩
-    exact lowerBoundClassIII1Block_covered hA hS
+  rcases hmem with h01 | h2
+  · rcases h01 with h0 | h1
+    · rcases h0 with ⟨A, hA, hS⟩
+      exact lowerBoundClassIII0Block_covered hA hS
+    · rcases h1 with ⟨A, hA, hS⟩
+      exact lowerBoundClassIII1Block_covered hA hS
   · rcases h2 with ⟨A, hA, hS⟩
     exact lowerBoundClassIII2Block_covered hA hS
 
@@ -2877,9 +2867,10 @@ theorem lowerBoundCandidates_terminal_fort_coverage :
     lowerBoundCandidateClassII ++
     lowerBoundCandidateClassIII at hmem
   simp only [List.mem_append] at hmem
-  rcases hmem with hI | hII | hIII
-  · exact lowerBoundCandidateClassI_terminal_fort_coverage hI
-  · exact lowerBoundCandidateClassII_terminal_fort_coverage hII
+  rcases hmem with hI_II | hIII
+  · rcases hI_II with hI | hII
+    · exact lowerBoundCandidateClassI_terminal_fort_coverage hI
+    · exact lowerBoundCandidateClassII_terminal_fort_coverage hII
   · exact lowerBoundCandidateClassIII_terminal_fort_coverage hIII
 
 /-- None of the 17,712 reduced candidates is a zero-forcing set. -/
