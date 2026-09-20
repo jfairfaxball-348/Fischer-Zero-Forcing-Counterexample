@@ -1,0 +1,6 @@
+import Solution
+
+#print axioms FischerZeroForcing.fischerGraph_indepNum
+#print axioms FischerZeroForcing.fischerGraph_zeroForcingNumber
+#print axioms FischerZeroForcing.fischerGraph_counterexample
+#print axioms FischerZeroForcing.main_result

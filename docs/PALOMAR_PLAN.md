@@ -1,78 +1,73 @@
 # Palomar plan
 
-No submission is made during bootstrap.
+No submission is made by this repository workflow. The final action remains a
+separate human submission of one immutable 40-character commit.
 
-Current Palomar requirements were checked on 2026-09-19. Before submitting, re-read the live policy because it can change.
+Current Palomar requirements were rechecked on 2026-09-20 against the live
+Palomar policy/submission tooling. The controlling metadata format is
+`formalization.yaml` v0.4. The current PalomarSubmission toolchain floor is
+Lean v4.28.0, so this project's pinned Lean v4.32.0 is within the supported
+range.
 
-## Final repository surface
+## Current mechanical contract
 
-Prepare a public immutable commit containing at minimum:
+The selected project contains:
 
-- exactly one Lake project file at the selected project root;
-- `lean-toolchain` pinned to a supported Lean release;
-- a committed `lake-manifest.json` with Git dependencies resolved to full commit SHAs;
-- a short, readable `Challenge.lean`;
+- exactly one Lake project file at the project root;
+- `lean-toolchain` pinned to Lean v4.32.0;
+- committed `lake-manifest.json`;
+- a short Mathlib-only `Challenge.lean`;
 - matching proved `Solution.lean`;
-- `comparator.json` naming every compared theorem and any required definitions;
-- `formalization.yaml` using the current schema (v0.4 at bootstrap time);
-- exactly one accepted root licence file;
-- source/provenance and human-readable mathematical account.
+- `comparator.json`;
+- `formalization.yaml` v0.4;
+- exactly one mechanically detectable root licence, `LICENSE`.
 
-Palomar records a full 40-character source commit SHA, not a moving branch.
+The Challenge's deliberate `sorry` is expected. Proof-status counts exclude
+that statement placeholder. The proved Solution may not depend on `sorryAx`,
+`Lean.ofReduceBool`, custom axioms, or unnamed missing definitions.
 
-## Challenge discipline
+Palomar independently forces every exported proof through both Lean's kernel
+and its pinned NanoDa kernel. The submitted `enable_nanoda` setting is not
+authoritative; independent replay is enforced by Palomar.
 
-The final Challenge should state the mathematically ordinary result and keep implementation machinery out of the statement surface.
+## Comparator surface
 
-Preferred strong statement:
+The single advertised declaration is:
 
-> There exists a connected simple graph on 24 vertices, of maximum degree at most 3, with independence number 9 and zero-forcing number 11.
+`FischerZeroForcing.main_result`
 
-This directly implies the weaker existential counterexample statement.
+The Challenge repeats the project-local definitions `CanForce`, `ForceStep`,
+`IsZeroForcingSet`, and `zeroForcingNumber` with the same definitions as the
+proof development. They are concrete statement dependencies, not Comparator
+definition holes, so `definition_names` is empty.
 
-If the explicit Fischer-graph statement produces a materially smaller or safer Comparator surface, document and choose that alternative before submission.
+## Full preflight
 
-## Mechanical constraints
+`.github/workflows/palomar-preflight.yml` invokes the official
+`PalomarRegistry/PalomarSubmission` reusable full-preflight workflow pinned to
+commit `3561d237dcc4b28482558ad28a64d767d7cc8615`.
 
-At bootstrap time Palomar requires Comparator to reject proofs depending on `sorryAx`, `Lean.ofReduceBool`, custom axioms, or unnamed missing definitions. The permitted standard axioms are controlled by Comparator policy. Palomar independently replays exported proofs with NanoDa as well as Lean's kernel.
-
-The Challenge hard limits are 1,000 lines and 100 KiB; Palomar's preferred review surface is at most roughly 300 lines and 32 KiB.
-
-Do not assume a normal `lake build` is equivalent to Palomar mechanical verification.
+That preflight is the preferred final mechanical check because it exercises the
+current Palomar validation, Comparator sandbox, and protected NanoDa replay
+without registering the result.
 
 ## Metadata and provenance
 
-The final `formalization.yaml` must honestly record:
+The metadata records this as source-based work formalizing Fischer's result,
+credits Mikko Fischer as the mathematical source author, identifies the
+repository maintainer/formalizer, discloses AI assistance, states the exact
+scope, and makes no novelty claim for Fischer's counterexample.
 
-- this is source-based work formalising Fischer's result;
-- Fischer as bibliographic source author;
-- the repository formalizer/maintainer;
-- AI assistance used in this project;
-- the exact scope and any fidelity gaps;
-- classification (math.CO; appropriate MSC codes, including the source's 05C69 and 05C50 if still appropriate);
-- review status;
-- related formalisations, if any;
-- source-author endorsement/contact status if the current schema asks for it.
+## Final readiness checklist
 
-Do not claim novelty for Fischer's counterexample.
-
-## Research-interest check
-
-The Palomar policy asks for credible research interest and an identifiable mathematical audience. The intended case is factual rather than promotional: this is a formal verification of a recent explicit counterexample to a named graph-theory conjecture, and the source itself discusses a prior Lean 4 formulation of the conjecture.
-
-Before submission, recheck that the exact theorem has not already been registered or publicly formalised. A duplicate or lightly repackaged formalisation can fail Palomar's editorial floor even if it builds.
-
-## Final checklist
-
-1. theorem statement audited against Fischer;
-2. zero-forcing definition audited;
-3. graph6/edge-list reconstruction agrees;
-4. all source witnesses/case counts agree;
-5. Solution has no prohibited proof mechanism;
-6. fresh `lake build` succeeds;
-7. Comparator succeeds;
-8. independent Python reconstruction succeeds;
-9. NanoDa/Palomar mechanical path succeeds;
-10. metadata, licence and provenance validate;
-11. exact result not already registered;
-12. only then submit the immutable commit.
+1. theorem statement unchanged and audited against Fischer;
+2. independent Python reconstruction passes;
+3. full `lake build` passes;
+4. `Audit.lean` reports only `propext`, `Classical.choice`, and `Quot.sound`
+   for the final theorem;
+5. official Palomar full preflight passes;
+6. exact result is not already registered or duplicated by a substantially
+   identical public formalization;
+7. the exact immutable commit used for submission is the commit that passed
+   all checks;
+8. only then open the Palomar submission form.

@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Fischer's 24-vertex zero-forcing counterexample"
+  description: >-
+    A Lean 4 formalization of Mikko Fischer's explicit connected 24-vertex
+    subcubic graph with independence number 9 and zero-forcing number 11.
+    The formalization verifies the exact graph and both numerical invariants,
+    yielding an existential counterexample to the proposed bound
+    Z(G) <= alpha(G) + 1 for connected graphs of maximum degree at most 3.
+  authors:
+    - name: "John Fairfax-Ball"
+      github: "jfairfaxball-348"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "John Fairfax-Ball"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C50", "05C69"]
+
+sources:
+  - title: "A counterexample to the zero forcing versus independence conjecture for cubic and subcubic graphs"
+    authors:
+      - "Mikko Fischer"
+    id: "arXiv:2607.23664v1"
+    type: "paper"
+    location: "https://arxiv.org/abs/2607.23664"
+    relationship: "formalizes"
+    note: >-
+      Formalizes the explicit 24-vertex graph H = G(K3) and the claims
+      alpha(H) = 9 and Z(H) = 11 from Theorem 2. The repository does not claim
+      novelty for Fischer's mathematical counterexample.
+
+status:
+  scope: >-
+    Proves that there exists a connected simple graph on 24 vertices with
+    maximum degree at most 3, independence number 9, and zero-forcing number 11,
+    using Fischer's explicit 24-vertex graph. It does not formalize the
+    36-vertex cubic example, any minimality result, or a general zero-forcing
+    theory beyond what is needed for this certificate.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI GPT-5.6 Sol"]
+      framework: "ChatGPT"
+      tool_setup: >-
+        Human-directed AI-assisted Lean and repository development using the
+        GitHub connector and GitHub Actions; proof changes were repeatedly
+        rebuilt and subjected to a theorem-level axiom audit.
+      cost:
+        wall_time: "multiple interactive sessions over 19-20 September 2026"
+        spend_usd: "subscription-based; exact API-equivalent spend not tracked"
+        hardware: "GitHub-hosted Linux CI and ChatGPT-hosted tool execution"
+      prompting_notes: >-
+        Prompts constrained the work to Fischer's explicit 24-vertex
+        counterexample and required independent reconstruction, kernel-only
+        repair, hostile trust-boundary auditing, and Palomar packaging.
+  spend_usd: "subscription-based; exact API-equivalent spend not tracked"
+  notes: >-
+    The human maintainer selected the target and scope, supplied acceptance
+    criteria, and directed iterative audits. AI assistance was used extensively
+    for Lean development, debugging, repository operations, and documentation.
+    The final finite graph claims are also reconstructed by a standard-library
+    Python checker independent of Lean.
+
+fidelity:
+  divergences: >-
+    No known mathematical divergence for the formalized 24-vertex result.
+    Scope is deliberately narrower than the source paper: the 36-vertex cubic
+    example and any minimality question are not formalized.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: >-
+    The completed theorem has undergone a hostile theorem-level Lean axiom
+    audit and an independent Python reconstruction of the source graph,
+    independence number, zero-forcing upper certificate, fort reduction, and
+    all 17,712 lower-bound candidates. No independent human referee review is
+    claimed.
+
+alignment:
+  namespace: "FischerZeroForcing"
+  statements:
+    - source: "Fischer (2026), Theorem 2, 24-vertex graph H = G(K3)"
+      lean: "FischerZeroForcing.main_result"
+      module: "Solution"
+      status: "proved"
+      note: >-
+        States existence of a connected simple graph on Fin 24 with maximum
+        degree at most 3, independence number 9, and zero-forcing number 11;
+        the witness is Fischer's explicit graph.
+
+acknowledgements: >-
+  Mikko Fischer for the source counterexample and certificates; Mathlib for the
+  Lean graph-theory infrastructure; and the Lean/Comparator/Palomar toolchain.

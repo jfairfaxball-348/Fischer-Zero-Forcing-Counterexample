@@ -56,7 +56,7 @@ instance fischerGraphDecidableAdj : DecidableRel fischerGraph.Adj := by
 
 /-- The human-readable edge list contains exactly 30 entries. -/
 theorem fischerEdges_length : fischerEdges.length = 30 := by
-  native_decide
+  decide
 
 /--
 Fischer's graph is connected.
@@ -128,6 +128,6 @@ theorem fischerGraph_subcubic :
     ∀ v : Vertex, (fischerGraph.neighborSet v).ncard ≤ 3 := by
   intro v
   rw [Set.ncard_eq_toFinset_card']
-  fin_cases v <;> native_decide
+  fin_cases v <;> decide
 
 end FischerZeroForcing

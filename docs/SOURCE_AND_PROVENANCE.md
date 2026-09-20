@@ -92,13 +92,23 @@ Source mathematics:
 - Z(H)=11;
 - the witness patterns and fort reduction.
 
-Repository contribution intended here:
+Repository contribution:
 
 - faithful Lean 4 definitions;
 - kernel-checked finite certificates/proofs;
 - independent transcription checking;
 - Palomar-oriented packaging and provenance.
 
-## Existing formalisation search
+## Existing formalisation / registry search
 
-Bootstrap searches on 2026-09-19 found no indexed public Lean formalisation, Palomar registration, or GitHub repository for this exact arXiv result. This is a time-sensitive negative search result, not a permanent claim. Recheck Palomar, GitHub, and public formalisation indexes immediately before submission.
+Rechecked on 2026-09-20 immediately before freezing the Palomar candidate.
+
+- The live Palomar registry data contained no entry matching "zero forcing",
+  "2607.23664", or "Fischer".
+- Current indexed web/GitHub searches found no substantially identical public
+  Lean formalization of this exact Fischer theorem.
+- Fischer's source discusses a Lean 4 formulation of the *conjecture* in the
+  earlier survey; that is not a formalization of this counterexample.
+
+This is a time-sensitive negative search result, not a permanent uniqueness
+claim.

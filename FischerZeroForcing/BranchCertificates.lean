@@ -65,32 +65,32 @@ private instance branchCertificatesFortDecidable (F : Finset Vertex) :
   infer_instance
 
 theorem branch1_card : branch1.card = 7 := by
-  native_decide
+  decide
 
 theorem branch2_card : branch2.card = 7 := by
-  native_decide
+  decide
 
 theorem branch1Forts_length : branch1Forts.length = 12 := by
-  native_decide
+  decide
 
 theorem branch2Forts_length : branch2Forts.length = 12 := by
-  native_decide
+  decide
 
 theorem branch1Forts_nodup : branch1Forts.Nodup := by
-  native_decide
+  decide
 
 theorem branch2Forts_nodup : branch2Forts.Nodup := by
-  native_decide
+  decide
 
 theorem branch1_fort_filter_eq :
     branch1.powerset.filter (fun F => F.Nonempty ∧ IsFort fischerGraph F) =
       branch1Forts.toFinset := by
-  native_decide
+  decide
 
 theorem branch2_fort_filter_eq :
     branch2.powerset.filter (fun F => F.Nonempty ∧ IsFort fischerGraph F) =
       branch2Forts.toFinset := by
-  native_decide
+  decide
 
 theorem branch1Forts_areForts :
     ∀ F ∈ branch1Forts, IsFort fischerGraph F := by
@@ -171,12 +171,12 @@ theorem branch2_fort_iff {F : Finset Vertex}
 private theorem branch1_no_small_hitting_set :
     branch1.powerset.filter
         (fun S => S.card < 3 ∧ HitsForts S branch1Forts) = ∅ := by
-  native_decide
+  decide
 
 private theorem branch2_no_small_hitting_set :
     branch2.powerset.filter
         (fun S => S.card < 3 ∧ HitsForts S branch2Forts) = ∅ := by
-  native_decide
+  decide
 
 theorem branch1_hittingSet_card_ge_three {S : Finset Vertex}
     (hS : S ⊆ branch1)
@@ -252,31 +252,31 @@ def branch2Size3HittingSets : List (Finset Vertex) :=
 
 theorem branch1Size3HittingSets_length :
     branch1Size3HittingSets.length = 12 := by
-  native_decide
+  decide
 
 theorem branch2Size3HittingSets_length :
     branch2Size3HittingSets.length = 12 := by
-  native_decide
+  decide
 
 theorem branch1Size3HittingSets_nodup :
     branch1Size3HittingSets.Nodup := by
-  native_decide
+  decide
 
 theorem branch2Size3HittingSets_nodup :
     branch2Size3HittingSets.Nodup := by
-  native_decide
+  decide
 
 theorem branch1_size3_hitting_filter_eq :
     branch1.powerset.filter
         (fun S => S.card = 3 ∧ HitsForts S branch1Forts) =
       branch1Size3HittingSets.toFinset := by
-  native_decide
+  decide
 
 theorem branch2_size3_hitting_filter_eq :
     branch2.powerset.filter
         (fun S => S.card = 3 ∧ HitsForts S branch2Forts) =
       branch2Size3HittingSets.toFinset := by
-  native_decide
+  decide
 
 theorem branch1_size3_hitting_iff {S : Finset Vertex}
     (hsub : S ⊆ branch1) (hcard : S.card = 3) :
@@ -420,45 +420,45 @@ def branch2Size4HittingSets : List (Finset Vertex) :=
 
 theorem branch0Size4HittingSets_length :
     branch0Size4HittingSets.length = 25 := by
-  native_decide
+  decide
 
 theorem branch1Size4HittingSets_length :
     branch1Size4HittingSets.length = 25 := by
-  native_decide
+  decide
 
 theorem branch2Size4HittingSets_length :
     branch2Size4HittingSets.length = 25 := by
-  native_decide
+  decide
 
 theorem branch0Size4HittingSets_nodup :
     branch0Size4HittingSets.Nodup := by
-  native_decide
+  decide
 
 theorem branch1Size4HittingSets_nodup :
     branch1Size4HittingSets.Nodup := by
-  native_decide
+  decide
 
 theorem branch2Size4HittingSets_nodup :
     branch2Size4HittingSets.Nodup := by
-  native_decide
+  decide
 
 theorem branch0_size4_hitting_filter_eq :
     branch0.powerset.filter
         (fun S => S.card = 4 ∧ HitsForts S branch0Forts) =
       branch0Size4HittingSets.toFinset := by
-  native_decide
+  decide
 
 theorem branch1_size4_hitting_filter_eq :
     branch1.powerset.filter
         (fun S => S.card = 4 ∧ HitsForts S branch1Forts) =
       branch1Size4HittingSets.toFinset := by
-  native_decide
+  decide
 
 theorem branch2_size4_hitting_filter_eq :
     branch2.powerset.filter
         (fun S => S.card = 4 ∧ HitsForts S branch2Forts) =
       branch2Size4HittingSets.toFinset := by
-  native_decide
+  decide
 
 theorem branch0_size4_hitting_iff {S : Finset Vertex}
     (hsub : S ⊆ branch0) (hcard : S.card = 4) :

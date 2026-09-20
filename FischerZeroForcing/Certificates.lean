@@ -17,12 +17,12 @@ def independentWitness : Finset Vertex :=
 
 /-- The explicit independence witness has nine vertices. -/
 theorem independentWitness_card : independentWitness.card = 9 := by
-  native_decide
+  decide
 
 /-- Fischer's explicit nine-vertex witness is an independent set. -/
 theorem independentWitness_isIndependent :
     fischerGraph.IsIndepSet independentWitness := by
-  native_decide
+  decide
 
 /-- The explicit witness gives the lower bound α(H) ≥ 9. -/
 theorem nine_le_fischerGraph_indepNum : 9 ≤ fischerGraph.indepNum := by
@@ -50,7 +50,7 @@ private theorem independenceCliqueCoverClass_eq_implies_adj :
       independenceCliqueCoverClass u = independenceCliqueCoverClass v →
       u ≠ v →
       fischerGraph.Adj u v := by
-  native_decide
+  decide
 
 /-- Every independent set in Fischer's graph has at most nine vertices. -/
 theorem fischerGraph_independentSet_card_le (S : Finset Vertex)
@@ -82,7 +82,7 @@ def zeroForcingWitness : Finset Vertex :=
 
 /-- The explicit zero-forcing witness has eleven vertices. -/
 theorem zeroForcingWitness_card : zeroForcingWitness.card = 11 := by
-  native_decide
+  decide
 
 /-!
 The following intermediate blue sets expose Fischer's 13-force certificate.
@@ -197,7 +197,7 @@ private theorem zeroForcingStep_21_23 :
 
 private theorem zeroForcingBlue13_eq_univ :
     zeroForcingBlue13 = (Finset.univ : Finset Vertex) := by
-  native_decide
+  decide
 
 /--
 Fischer's explicit eleven-vertex witness zero-forces every vertex.
