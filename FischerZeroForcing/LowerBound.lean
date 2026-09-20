@@ -175,127 +175,269 @@ private instance allTerminalFortsValidDecidable :
       infer_instance
 
 /--
+Small kernel-checkable chunks of the 112 terminal forts.  The canonical
+`lowerBoundTerminalForts` list above remains unchanged; these chunks merely
+partition it into bounded proof obligations.
+-/
+private def lowerBoundTerminalFortsChunk00 : List (Finset Vertex) := [
+  ([0, 1, 4, 5, 11, 12] : List Vertex).toFinset,
+  ([0, 1, 4, 5, 11, 13] : List Vertex).toFinset,
+  ([0, 1, 4, 5, 14, 15] : List Vertex).toFinset,
+  ([0, 1, 4, 5, 14, 16] : List Vertex).toFinset,
+  ([0, 1, 4, 6, 11, 12] : List Vertex).toFinset,
+  ([0, 1, 4, 6, 11, 13] : List Vertex).toFinset,
+  ([0, 1, 4, 6, 14, 15] : List Vertex).toFinset,
+  ([0, 1, 4, 6, 14, 16] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk00_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk00 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk01 : List (Finset Vertex) := [
+  ([0, 1, 7, 8, 11, 12] : List Vertex).toFinset,
+  ([0, 1, 7, 8, 11, 13] : List Vertex).toFinset,
+  ([0, 1, 7, 8, 14, 15] : List Vertex).toFinset,
+  ([0, 1, 7, 8, 14, 16] : List Vertex).toFinset,
+  ([0, 1, 7, 9, 11, 12] : List Vertex).toFinset,
+  ([0, 1, 7, 9, 11, 13] : List Vertex).toFinset,
+  ([0, 1, 7, 9, 14, 15] : List Vertex).toFinset,
+  ([0, 1, 7, 9, 14, 16] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk01_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk01 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk02 : List (Finset Vertex) := [
+  ([0, 2, 4, 5, 18, 19] : List Vertex).toFinset,
+  ([0, 2, 4, 5, 18, 20] : List Vertex).toFinset,
+  ([0, 2, 4, 5, 21, 22] : List Vertex).toFinset,
+  ([0, 2, 4, 5, 21, 23] : List Vertex).toFinset,
+  ([0, 2, 4, 6, 18, 19] : List Vertex).toFinset,
+  ([0, 2, 4, 6, 18, 20] : List Vertex).toFinset,
+  ([0, 2, 4, 6, 21, 22] : List Vertex).toFinset,
+  ([0, 2, 4, 6, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk02_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk02 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk03 : List (Finset Vertex) := [
+  ([0, 2, 7, 8, 18, 19] : List Vertex).toFinset,
+  ([0, 2, 7, 8, 18, 20] : List Vertex).toFinset,
+  ([0, 2, 7, 8, 21, 22] : List Vertex).toFinset,
+  ([0, 2, 7, 8, 21, 23] : List Vertex).toFinset,
+  ([0, 2, 7, 9, 18, 19] : List Vertex).toFinset,
+  ([0, 2, 7, 9, 18, 20] : List Vertex).toFinset,
+  ([0, 2, 7, 9, 21, 22] : List Vertex).toFinset,
+  ([0, 2, 7, 9, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk03_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk03 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk04 : List (Finset Vertex) := [
+  ([1, 2, 11, 12, 18, 19] : List Vertex).toFinset,
+  ([1, 2, 11, 12, 18, 20] : List Vertex).toFinset,
+  ([1, 2, 11, 12, 21, 22] : List Vertex).toFinset,
+  ([1, 2, 11, 12, 21, 23] : List Vertex).toFinset,
+  ([1, 2, 11, 13, 18, 19] : List Vertex).toFinset,
+  ([1, 2, 11, 13, 18, 20] : List Vertex).toFinset,
+  ([1, 2, 11, 13, 21, 22] : List Vertex).toFinset,
+  ([1, 2, 11, 13, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk04_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk04 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk05 : List (Finset Vertex) := [
+  ([1, 2, 14, 15, 18, 19] : List Vertex).toFinset,
+  ([1, 2, 14, 15, 18, 20] : List Vertex).toFinset,
+  ([1, 2, 14, 15, 21, 22] : List Vertex).toFinset,
+  ([1, 2, 14, 15, 21, 23] : List Vertex).toFinset,
+  ([1, 2, 14, 16, 18, 19] : List Vertex).toFinset,
+  ([1, 2, 14, 16, 18, 20] : List Vertex).toFinset,
+  ([1, 2, 14, 16, 21, 22] : List Vertex).toFinset,
+  ([1, 2, 14, 16, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk05_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk05 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk06 : List (Finset Vertex) := [
+  ([0, 1, 2, 4, 5, 11, 12, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 12, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 12, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 12, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 13, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 13, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 13, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 11, 13, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk06_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk06 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk07 : List (Finset Vertex) := [
+  ([0, 1, 2, 4, 5, 14, 15, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 15, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 15, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 15, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 16, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 16, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 16, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 5, 14, 16, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk07_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk07 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk08 : List (Finset Vertex) := [
+  ([0, 1, 2, 4, 6, 11, 12, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 12, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 12, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 12, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 13, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 13, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 13, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 11, 13, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk08_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk08 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk09 : List (Finset Vertex) := [
+  ([0, 1, 2, 4, 6, 14, 15, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 15, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 15, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 15, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 16, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 16, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 16, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 4, 6, 14, 16, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk09_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk09 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk10 : List (Finset Vertex) := [
+  ([0, 1, 2, 7, 8, 11, 12, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 12, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 12, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 12, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 13, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 13, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 13, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 11, 13, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk10_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk10 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk11 : List (Finset Vertex) := [
+  ([0, 1, 2, 7, 8, 14, 15, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 15, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 15, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 15, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 16, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 16, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 16, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 8, 14, 16, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk11_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk11 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk12 : List (Finset Vertex) := [
+  ([0, 1, 2, 7, 9, 11, 12, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 12, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 12, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 12, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 13, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 13, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 13, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 11, 13, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk12_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk12 := by
+  decide
+
+private def lowerBoundTerminalFortsChunk13 : List (Finset Vertex) := [
+  ([0, 1, 2, 7, 9, 14, 15, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 15, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 15, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 15, 21, 23] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 16, 18, 19] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 16, 18, 20] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 16, 21, 22] : List Vertex).toFinset,
+  ([0, 1, 2, 7, 9, 14, 16, 21, 23] : List Vertex).toFinset
+]
+
+private theorem lowerBoundTerminalFortsChunk13_valid :
+    AllTerminalFortsValid lowerBoundTerminalFortsChunk13 := by
+  decide
+
+private theorem AllTerminalFortsValid.append
+    {xs ys : List (Finset Vertex)}
+    (hx : AllTerminalFortsValid xs)
+    (hy : AllTerminalFortsValid ys) :
+    AllTerminalFortsValid (xs ++ ys) := by
+  induction xs with
+  | nil =>
+      simpa [AllTerminalFortsValid] using hy
+  | cons F rest ih =>
+      simp only [AllTerminalFortsValid] at hx ⊢
+      exact ⟨hx.1, ih hx.2 hy⟩
+
+/--
 Every one of the 112 explicit obstruction sets is a nonempty fort.
 
-The certificate is deliberately elaborated one fort at a time.  This is the
-same kernel-checked finite proof as a single `decide`, but avoids forcing the
-kernel to normalize one very large nested decision in a single reduction.
+Lean checks fourteen independent eight-fort chunks with ordinary `decide`,
+then combines those kernel-checked propositions structurally.
 -/
 theorem lowerBoundTerminalForts_valid :
     AllTerminalFortsValid lowerBoundTerminalForts := by
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  refine ⟨by decide, ?_⟩
-  trivial
+  change AllTerminalFortsValid (
+      lowerBoundTerminalFortsChunk00 ++
+      lowerBoundTerminalFortsChunk01 ++
+      lowerBoundTerminalFortsChunk02 ++
+      lowerBoundTerminalFortsChunk03 ++
+      lowerBoundTerminalFortsChunk04 ++
+      lowerBoundTerminalFortsChunk05 ++
+      lowerBoundTerminalFortsChunk06 ++
+      lowerBoundTerminalFortsChunk07 ++
+      lowerBoundTerminalFortsChunk08 ++
+      lowerBoundTerminalFortsChunk09 ++
+      lowerBoundTerminalFortsChunk10 ++
+      lowerBoundTerminalFortsChunk11 ++
+      lowerBoundTerminalFortsChunk12 ++
+      lowerBoundTerminalFortsChunk13)
+  exact AllTerminalFortsValid.append lowerBoundTerminalFortsChunk00_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk01_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk02_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk03_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk04_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk05_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk06_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk07_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk08_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk09_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk10_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk11_valid (
+      AllTerminalFortsValid.append lowerBoundTerminalFortsChunk12_valid (
+      lowerBoundTerminalFortsChunk13_valid)))))))))))))
 
 /-- Extract one fort's validity from the list-local validity certificate. -/
 theorem AllTerminalFortsValid.of_mem
@@ -2193,6 +2335,30 @@ Kernel checks for the 17,712 candidate/witness pairs, split into 73 bounded
 structural blocks.  The largest block contains 432 candidates.  Every theorem
 uses ordinary kernel `decide`.
 -/
+/--
+Combine three bounded candidate slices without recomputing a large Boolean
+certificate.  Each premise is independently kernel checked.
+-/
+private theorem CoverageWitnessesValidBool.of_mem_three_slices
+    {xs : List (Finset Vertex)}
+    {w0 w1 w2 : List Nat}
+    {n m : Nat}
+    (h0 : CoverageWitnessesValidBool (xs.take n) w0 = true)
+    (h1 : CoverageWitnessesValidBool ((xs.drop n).take m) w1 = true)
+    (h2 : CoverageWitnessesValidBool ((xs.drop n).drop m) w2 = true)
+    {S : Finset Vertex}
+    (hS : S ∈ xs) :
+    ∃ F ∈ lowerBoundTerminalForts, Disjoint S F := by
+  rw [← List.take_append_drop n xs] at hS
+  simp only [List.mem_append] at hS
+  rcases hS with hfirst | hrest
+  · exact CoverageWitnessesValidBool.of_mem h0 hfirst
+  · rw [← List.take_append_drop m (xs.drop n)] at hrest
+    simp only [List.mem_append] at hrest
+    rcases hrest with hsecond | hthird
+    · exact CoverageWitnessesValidBool.of_mem h1 hsecond
+    · exact CoverageWitnessesValidBool.of_mem h2 hthird
+
 private theorem lowerBoundCoverageI00_valid :
     CoverageWitnessesValidBool
       (lowerBoundClassIBlock (([4, 5, 8] : List Vertex).toFinset))
@@ -2265,76 +2431,220 @@ private theorem lowerBoundCoverageI11_valid :
       lowerBoundCoverageI11 = true := by
   decide
 
-private theorem lowerBoundCoverageII00_valid :
+private theorem lowerBoundCoverageII00_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([4, 5, 8] : List Vertex).toFinset))
-      lowerBoundCoverageII00 = true := by
+      (lowerBoundClassIIBlock (([4, 5, 8] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII00.take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII01_valid :
+private theorem lowerBoundCoverageII00_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([4, 5, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII01 = true := by
+      ((lowerBoundClassIIBlock (([4, 5, 8] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII00.drop 144).take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII02_valid :
+private theorem lowerBoundCoverageII00_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([4, 6, 8] : List Vertex).toFinset))
-      lowerBoundCoverageII02 = true := by
+      ((lowerBoundClassIIBlock (([4, 5, 8] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII00.drop 144).drop 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII03_valid :
+private theorem lowerBoundCoverageII01_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([4, 6, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII03 = true := by
+      (lowerBoundClassIIBlock (([4, 5, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII01.take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII04_valid :
+private theorem lowerBoundCoverageII01_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([5, 6, 8] : List Vertex).toFinset))
-      lowerBoundCoverageII04 = true := by
+      ((lowerBoundClassIIBlock (([4, 5, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII01.drop 144).take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII05_valid :
+private theorem lowerBoundCoverageII01_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([5, 6, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII05 = true := by
+      ((lowerBoundClassIIBlock (([4, 5, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII01.drop 144).drop 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII06_valid :
+private theorem lowerBoundCoverageII02_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([5, 7, 8] : List Vertex).toFinset))
-      lowerBoundCoverageII06 = true := by
+      (lowerBoundClassIIBlock (([4, 6, 8] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII02.take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII07_valid :
+private theorem lowerBoundCoverageII02_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([5, 7, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII07 = true := by
+      ((lowerBoundClassIIBlock (([4, 6, 8] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII02.drop 144).take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII08_valid :
+private theorem lowerBoundCoverageII02_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([5, 8, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII08 = true := by
+      ((lowerBoundClassIIBlock (([4, 6, 8] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII02.drop 144).drop 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII09_valid :
+private theorem lowerBoundCoverageII03_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([6, 7, 8] : List Vertex).toFinset))
-      lowerBoundCoverageII09 = true := by
+      (lowerBoundClassIIBlock (([4, 6, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII03.take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII10_valid :
+private theorem lowerBoundCoverageII03_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([6, 7, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII10 = true := by
+      ((lowerBoundClassIIBlock (([4, 6, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII03.drop 144).take 144 = true := by
   decide
 
-private theorem lowerBoundCoverageII11_valid :
+private theorem lowerBoundCoverageII03_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIIBlock (([6, 8, 9] : List Vertex).toFinset))
-      lowerBoundCoverageII11 = true := by
+      ((lowerBoundClassIIBlock (([4, 6, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII03.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII04_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([5, 6, 8] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII04.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII04_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 6, 8] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII04.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII04_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 6, 8] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII04.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII05_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([5, 6, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII05.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII05_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 6, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII05.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII05_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 6, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII05.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII06_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([5, 7, 8] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII06.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII06_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 7, 8] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII06.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII06_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 7, 8] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII06.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII07_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([5, 7, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII07.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII07_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 7, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII07.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII07_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 7, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII07.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII08_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([5, 8, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII08.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII08_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 8, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII08.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII08_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([5, 8, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII08.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII09_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([6, 7, 8] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII09.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII09_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([6, 7, 8] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII09.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII09_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([6, 7, 8] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII09.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII10_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([6, 7, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII10.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII10_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([6, 7, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII10.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII10_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([6, 7, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII10.drop 144).drop 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII11_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIIBlock (([6, 8, 9] : List Vertex).toFinset)).take 144
+      lowerBoundCoverageII11.take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII11_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([6, 8, 9] : List Vertex).toFinset)).drop 144).take 144
+      (lowerBoundCoverageII11.drop 144).take 144 = true := by
+  decide
+
+private theorem lowerBoundCoverageII11_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIIBlock (([6, 8, 9] : List Vertex).toFinset)).drop 144).drop 144
+      (lowerBoundCoverageII11.drop 144).drop 144 = true := by
   decide
 
 private theorem lowerBoundCoverageIII0_00_valid :
@@ -2487,148 +2797,436 @@ private theorem lowerBoundCoverageIII0_24_valid :
       lowerBoundCoverageIII0_24 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_00_valid :
+private theorem lowerBoundCoverageIII1_00_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([4, 5, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_00 = true := by
+      (lowerBoundClassIII1Block (([4, 5, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_00.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_01_valid :
+private theorem lowerBoundCoverageIII1_00_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([4, 5, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_01 = true := by
+      ((lowerBoundClassIII1Block (([4, 5, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_00.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_02_valid :
+private theorem lowerBoundCoverageIII1_00_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([4, 6, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_02 = true := by
+      ((lowerBoundClassIII1Block (([4, 5, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_00.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_03_valid :
+private theorem lowerBoundCoverageIII1_01_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([4, 6, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_03 = true := by
+      (lowerBoundClassIII1Block (([4, 5, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_01.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_04_valid :
+private theorem lowerBoundCoverageIII1_01_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([5, 6, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_04 = true := by
+      ((lowerBoundClassIII1Block (([4, 5, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_01.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_05_valid :
+private theorem lowerBoundCoverageIII1_01_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([5, 6, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_05 = true := by
+      ((lowerBoundClassIII1Block (([4, 5, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_01.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_06_valid :
+private theorem lowerBoundCoverageIII1_02_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([5, 7, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_06 = true := by
+      (lowerBoundClassIII1Block (([4, 6, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_02.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_07_valid :
+private theorem lowerBoundCoverageIII1_02_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([5, 7, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_07 = true := by
+      ((lowerBoundClassIII1Block (([4, 6, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_02.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_08_valid :
+private theorem lowerBoundCoverageIII1_02_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([5, 8, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_08 = true := by
+      ((lowerBoundClassIII1Block (([4, 6, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_02.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_09_valid :
+private theorem lowerBoundCoverageIII1_03_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([6, 7, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_09 = true := by
+      (lowerBoundClassIII1Block (([4, 6, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_03.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_10_valid :
+private theorem lowerBoundCoverageIII1_03_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([6, 7, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_10 = true := by
+      ((lowerBoundClassIII1Block (([4, 6, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_03.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII1_11_valid :
+private theorem lowerBoundCoverageIII1_03_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII1Block (([6, 8, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII1_11 = true := by
+      ((lowerBoundClassIII1Block (([4, 6, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_03.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_00_valid :
+private theorem lowerBoundCoverageIII1_04_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([4, 5, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_00 = true := by
+      (lowerBoundClassIII1Block (([5, 6, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_04.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_01_valid :
+private theorem lowerBoundCoverageIII1_04_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([4, 5, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_01 = true := by
+      ((lowerBoundClassIII1Block (([5, 6, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_04.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_02_valid :
+private theorem lowerBoundCoverageIII1_04_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([4, 6, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_02 = true := by
+      ((lowerBoundClassIII1Block (([5, 6, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_04.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_03_valid :
+private theorem lowerBoundCoverageIII1_05_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([4, 6, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_03 = true := by
+      (lowerBoundClassIII1Block (([5, 6, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_05.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_04_valid :
+private theorem lowerBoundCoverageIII1_05_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([5, 6, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_04 = true := by
+      ((lowerBoundClassIII1Block (([5, 6, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_05.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_05_valid :
+private theorem lowerBoundCoverageIII1_05_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([5, 6, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_05 = true := by
+      ((lowerBoundClassIII1Block (([5, 6, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_05.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_06_valid :
+private theorem lowerBoundCoverageIII1_06_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([5, 7, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_06 = true := by
+      (lowerBoundClassIII1Block (([5, 7, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_06.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_07_valid :
+private theorem lowerBoundCoverageIII1_06_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([5, 7, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_07 = true := by
+      ((lowerBoundClassIII1Block (([5, 7, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_06.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_08_valid :
+private theorem lowerBoundCoverageIII1_06_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([5, 8, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_08 = true := by
+      ((lowerBoundClassIII1Block (([5, 7, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_06.drop 120).drop 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_09_valid :
+private theorem lowerBoundCoverageIII1_07_a_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([6, 7, 8] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_09 = true := by
+      (lowerBoundClassIII1Block (([5, 7, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_07.take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_10_valid :
+private theorem lowerBoundCoverageIII1_07_b_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([6, 7, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_10 = true := by
+      ((lowerBoundClassIII1Block (([5, 7, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_07.drop 120).take 120 = true := by
   decide
 
-private theorem lowerBoundCoverageIII2_11_valid :
+private theorem lowerBoundCoverageIII1_07_c_valid :
     CoverageWitnessesValidBool
-      (lowerBoundClassIII2Block (([6, 8, 9] : List Vertex).toFinset))
-      lowerBoundCoverageIII2_11 = true := by
+      ((lowerBoundClassIII1Block (([5, 7, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_07.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_08_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII1Block (([5, 8, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_08.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_08_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([5, 8, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_08.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_08_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([5, 8, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_08.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_09_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII1Block (([6, 7, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_09.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_09_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([6, 7, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_09.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_09_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([6, 7, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_09.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_10_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII1Block (([6, 7, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_10.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_10_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([6, 7, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_10.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_10_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([6, 7, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_10.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_11_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII1Block (([6, 8, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII1_11.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_11_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([6, 8, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII1_11.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII1_11_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII1Block (([6, 8, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII1_11.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_00_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([4, 5, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_00.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_00_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 5, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_00.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_00_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 5, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_00.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_01_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([4, 5, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_01.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_01_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 5, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_01.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_01_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 5, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_01.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_02_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([4, 6, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_02.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_02_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 6, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_02.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_02_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 6, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_02.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_03_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([4, 6, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_03.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_03_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 6, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_03.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_03_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([4, 6, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_03.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_04_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([5, 6, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_04.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_04_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 6, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_04.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_04_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 6, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_04.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_05_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([5, 6, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_05.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_05_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 6, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_05.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_05_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 6, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_05.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_06_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([5, 7, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_06.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_06_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 7, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_06.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_06_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 7, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_06.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_07_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([5, 7, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_07.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_07_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 7, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_07.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_07_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 7, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_07.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_08_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([5, 8, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_08.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_08_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 8, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_08.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_08_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([5, 8, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_08.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_09_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([6, 7, 8] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_09.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_09_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([6, 7, 8] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_09.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_09_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([6, 7, 8] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_09.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_10_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([6, 7, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_10.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_10_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([6, 7, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_10.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_10_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([6, 7, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_10.drop 120).drop 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_11_a_valid :
+    CoverageWitnessesValidBool
+      (lowerBoundClassIII2Block (([6, 8, 9] : List Vertex).toFinset)).take 120
+      lowerBoundCoverageIII2_11.take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_11_b_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([6, 8, 9] : List Vertex).toFinset)).drop 120).take 120
+      (lowerBoundCoverageIII2_11.drop 120).take 120 = true := by
+  decide
+
+private theorem lowerBoundCoverageIII2_11_c_valid :
+    CoverageWitnessesValidBool
+      ((lowerBoundClassIII2Block (([6, 8, 9] : List Vertex).toFinset)).drop 120).drop 120
+      (lowerBoundCoverageIII2_11.drop 120).drop 120 = true := by
   decide
 
 private theorem lowerBoundClassIBlock_covered
@@ -2671,29 +3269,41 @@ private theorem lowerBoundClassIIBlock_covered
   simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII00_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII00_a_valid lowerBoundCoverageII00_b_valid lowerBoundCoverageII00_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII01_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII01_a_valid lowerBoundCoverageII01_b_valid lowerBoundCoverageII01_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII02_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII02_a_valid lowerBoundCoverageII02_b_valid lowerBoundCoverageII02_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII03_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII03_a_valid lowerBoundCoverageII03_b_valid lowerBoundCoverageII03_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII04_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII04_a_valid lowerBoundCoverageII04_b_valid lowerBoundCoverageII04_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII05_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII05_a_valid lowerBoundCoverageII05_b_valid lowerBoundCoverageII05_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII06_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII06_a_valid lowerBoundCoverageII06_b_valid lowerBoundCoverageII06_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII07_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII07_a_valid lowerBoundCoverageII07_b_valid lowerBoundCoverageII07_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII08_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII08_a_valid lowerBoundCoverageII08_b_valid lowerBoundCoverageII08_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII09_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII09_a_valid lowerBoundCoverageII09_b_valid lowerBoundCoverageII09_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII10_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII10_a_valid lowerBoundCoverageII10_b_valid lowerBoundCoverageII10_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageII11_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageII11_a_valid lowerBoundCoverageII11_b_valid lowerBoundCoverageII11_c_valid hS
 
 private theorem lowerBoundClassIII0Block_covered
     {A S : Finset Vertex}
@@ -2761,29 +3371,41 @@ private theorem lowerBoundClassIII1Block_covered
   simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_00_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_00_a_valid lowerBoundCoverageIII1_00_b_valid lowerBoundCoverageIII1_00_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_01_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_01_a_valid lowerBoundCoverageIII1_01_b_valid lowerBoundCoverageIII1_01_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_02_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_02_a_valid lowerBoundCoverageIII1_02_b_valid lowerBoundCoverageIII1_02_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_03_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_03_a_valid lowerBoundCoverageIII1_03_b_valid lowerBoundCoverageIII1_03_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_04_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_04_a_valid lowerBoundCoverageIII1_04_b_valid lowerBoundCoverageIII1_04_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_05_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_05_a_valid lowerBoundCoverageIII1_05_b_valid lowerBoundCoverageIII1_05_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_06_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_06_a_valid lowerBoundCoverageIII1_06_b_valid lowerBoundCoverageIII1_06_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_07_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_07_a_valid lowerBoundCoverageIII1_07_b_valid lowerBoundCoverageIII1_07_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_08_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_08_a_valid lowerBoundCoverageIII1_08_b_valid lowerBoundCoverageIII1_08_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_09_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_09_a_valid lowerBoundCoverageIII1_09_b_valid lowerBoundCoverageIII1_09_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_10_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_10_a_valid lowerBoundCoverageIII1_10_b_valid lowerBoundCoverageIII1_10_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII1_11_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII1_11_a_valid lowerBoundCoverageIII1_11_b_valid lowerBoundCoverageIII1_11_c_valid hS
 
 private theorem lowerBoundClassIII2Block_covered
     {A S : Finset Vertex}
@@ -2793,29 +3415,41 @@ private theorem lowerBoundClassIII2Block_covered
   simp only [branch0Size3HittingSets, List.mem_cons, List.not_mem_nil, or_false] at hA
   rcases hA with hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA | hA
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_00_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_00_a_valid lowerBoundCoverageIII2_00_b_valid lowerBoundCoverageIII2_00_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_01_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_01_a_valid lowerBoundCoverageIII2_01_b_valid lowerBoundCoverageIII2_01_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_02_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_02_a_valid lowerBoundCoverageIII2_02_b_valid lowerBoundCoverageIII2_02_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_03_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_03_a_valid lowerBoundCoverageIII2_03_b_valid lowerBoundCoverageIII2_03_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_04_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_04_a_valid lowerBoundCoverageIII2_04_b_valid lowerBoundCoverageIII2_04_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_05_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_05_a_valid lowerBoundCoverageIII2_05_b_valid lowerBoundCoverageIII2_05_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_06_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_06_a_valid lowerBoundCoverageIII2_06_b_valid lowerBoundCoverageIII2_06_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_07_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_07_a_valid lowerBoundCoverageIII2_07_b_valid lowerBoundCoverageIII2_07_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_08_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_08_a_valid lowerBoundCoverageIII2_08_b_valid lowerBoundCoverageIII2_08_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_09_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_09_a_valid lowerBoundCoverageIII2_09_b_valid lowerBoundCoverageIII2_09_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_10_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_10_a_valid lowerBoundCoverageIII2_10_b_valid lowerBoundCoverageIII2_10_c_valid hS
   · subst A
-    exact CoverageWitnessesValidBool.of_mem lowerBoundCoverageIII2_11_valid hS
+    exact CoverageWitnessesValidBool.of_mem_three_slices
+      lowerBoundCoverageIII2_11_a_valid lowerBoundCoverageIII2_11_b_valid lowerBoundCoverageIII2_11_c_valid hS
 
 private theorem lowerBoundCandidateClassI_terminal_fort_coverage
     {S : Finset Vertex}
