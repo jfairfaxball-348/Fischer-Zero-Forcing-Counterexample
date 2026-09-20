@@ -3,13 +3,13 @@ import Mathlib
 /-!
 # Fischer's zero-forcing counterexample: advertised statement
 
-This is the intended small Palomar-facing surface. During bootstrap the theorem
-below deliberately contains `sorry`; the repository status is therefore NOT
-YET FORMALLY VERIFIED.
+This is the deliberately small Palomar-facing statement surface. The theorem
+below contains one intentional `sorry`: Palomar/Comparator compiles this
+Challenge separately and checks that the proved declaration in `Solution.lean`
+has the same statement and uses only the permitted axioms.
 
-The local zero-forcing definitions are repeated here so that the eventual
-Challenge module can remain auditable and depend only on allowlisted Mathlib
-rather than on implementation-heavy project modules.
+The zero-forcing definitions are repeated here so the Challenge depends only on
+allowlisted Mathlib rather than on implementation-heavy project modules.
 -/
 
 namespace FischerZeroForcing
