@@ -2,7 +2,7 @@ name: Palomar Preflight
 
 on:
   push:
-    branches: [main, final-audit-palomar-packaging]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -16,6 +16,6 @@ jobs:
       repository: ${{ github.repository }}
       commit: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
       pipeline_commit: 3561d237dcc4b28482558ad28a64d767d7cc8615
-      request_id: ${{ format('fischer{0}', github.run_id) }}
+      request_id: fischerverify
       mode: full
       options: '{"comparator_config_path":"comparator.json","authorization_relationship":"I am a responsible author or maintainer"}'
