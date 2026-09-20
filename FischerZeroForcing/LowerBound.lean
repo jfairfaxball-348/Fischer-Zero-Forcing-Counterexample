@@ -174,12 +174,130 @@ private instance allTerminalFortsValidDecidable :
         ((F.Nonempty ∧ IsFort fischerGraph F) ∧ AllTerminalFortsValid rest)
       infer_instance
 
-/-- Every one of the 112 explicit obstruction sets is a nonempty fort. -/
+/--
+Every one of the 112 explicit obstruction sets is a nonempty fort.
+
+The certificate is deliberately elaborated one fort at a time.  This is the
+same kernel-checked finite proof as a single `decide`, but avoids forcing the
+kernel to normalize one very large nested decision in a single reduction.
+-/
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
 theorem lowerBoundTerminalForts_valid :
     AllTerminalFortsValid lowerBoundTerminalForts := by
-  decide
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  refine ⟨by decide, ?_⟩
+  trivial
 
 /-- Extract one fort's validity from the list-local validity certificate. -/
 theorem AllTerminalFortsValid.of_mem
@@ -306,30 +424,692 @@ theorem AllCandidatesCoveredBool.eq_true_of_forall
         ih hrest
       simp [AllCandidatesCoveredBool, hA, htail]
 
-/-- Small kernel-reducible selector used by the explicit coverage certificate. -/
-def terminalFortAt : Nat → List (Finset Vertex) → Option (Finset Vertex)
-  | _, [] => none
-  | 0, F :: _ => some F
-  | Nat.succ i, _ :: rest => terminalFortAt i rest
+/--
+A terminal fort together with a kernel-checked proof that it belongs to the
+explicit 112-fort certificate.
+-/
+def TerminalFortMember :=
+  {F : Finset Vertex // F ∈ lowerBoundTerminalForts}
 
-/-- A successful selector result is genuinely a member of the supplied list. -/
-theorem terminalFortAt_mem
-    {i : Nat} {forts : List (Finset Vertex)} {F : Finset Vertex}
-    (h : terminalFortAt i forts = some F) :
-    F ∈ forts := by
-  induction forts generalizing i with
-  | nil =>
-      simp [terminalFortAt] at h
-  | cons A rest ih =>
-      cases i with
-      | zero =>
-          simp [terminalFortAt] at h
-          subst F
-          simp
-      | succ i =>
-          simp only [terminalFortAt] at h
-          have hmem : F ∈ rest := ih h
-          simp [hmem]
+/--
+Balanced selector for the explicit terminal-fort certificate.
+
+The previous selector traversed the 112-element list linearly for every one of
+the 17,712 candidates.  This decision tree selects the same fort in logarithmic
+depth.  Each leaf separately kernel-checks that its literal fort really occurs
+in `lowerBoundTerminalForts`; no external computation is trusted.
+-/
+def terminalFortCertificate (i : Nat) : Option TerminalFortMember :=
+  if i < 56 then
+    if i < 28 then
+      if i < 14 then
+        if i < 7 then
+          if i < 3 then
+            if i < 1 then
+              if i = 0 then
+                some ⟨([0, 1, 4, 5, 11, 12] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 2 then
+                if i = 1 then
+                  some ⟨([0, 1, 4, 5, 11, 13] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 2 then
+                  some ⟨([0, 1, 4, 5, 14, 15] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 5 then
+              if i < 4 then
+                if i = 3 then
+                  some ⟨([0, 1, 4, 5, 14, 16] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 4 then
+                  some ⟨([0, 1, 4, 6, 11, 12] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 6 then
+                if i = 5 then
+                  some ⟨([0, 1, 4, 6, 11, 13] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 6 then
+                  some ⟨([0, 1, 4, 6, 14, 15] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 10 then
+            if i < 8 then
+              if i = 7 then
+                some ⟨([0, 1, 4, 6, 14, 16] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 9 then
+                if i = 8 then
+                  some ⟨([0, 1, 7, 8, 11, 12] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 9 then
+                  some ⟨([0, 1, 7, 8, 11, 13] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 12 then
+              if i < 11 then
+                if i = 10 then
+                  some ⟨([0, 1, 7, 8, 14, 15] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 11 then
+                  some ⟨([0, 1, 7, 8, 14, 16] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 13 then
+                if i = 12 then
+                  some ⟨([0, 1, 7, 9, 11, 12] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 13 then
+                  some ⟨([0, 1, 7, 9, 11, 13] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+      else
+        if i < 21 then
+          if i < 17 then
+            if i < 15 then
+              if i = 14 then
+                some ⟨([0, 1, 7, 9, 14, 15] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 16 then
+                if i = 15 then
+                  some ⟨([0, 1, 7, 9, 14, 16] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 16 then
+                  some ⟨([0, 2, 4, 5, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 19 then
+              if i < 18 then
+                if i = 17 then
+                  some ⟨([0, 2, 4, 5, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 18 then
+                  some ⟨([0, 2, 4, 5, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 20 then
+                if i = 19 then
+                  some ⟨([0, 2, 4, 5, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 20 then
+                  some ⟨([0, 2, 4, 6, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 24 then
+            if i < 22 then
+              if i = 21 then
+                some ⟨([0, 2, 4, 6, 18, 20] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 23 then
+                if i = 22 then
+                  some ⟨([0, 2, 4, 6, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 23 then
+                  some ⟨([0, 2, 4, 6, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 26 then
+              if i < 25 then
+                if i = 24 then
+                  some ⟨([0, 2, 7, 8, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 25 then
+                  some ⟨([0, 2, 7, 8, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 27 then
+                if i = 26 then
+                  some ⟨([0, 2, 7, 8, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 27 then
+                  some ⟨([0, 2, 7, 8, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+    else
+      if i < 42 then
+        if i < 35 then
+          if i < 31 then
+            if i < 29 then
+              if i = 28 then
+                some ⟨([0, 2, 7, 9, 18, 19] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 30 then
+                if i = 29 then
+                  some ⟨([0, 2, 7, 9, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 30 then
+                  some ⟨([0, 2, 7, 9, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 33 then
+              if i < 32 then
+                if i = 31 then
+                  some ⟨([0, 2, 7, 9, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 32 then
+                  some ⟨([1, 2, 11, 12, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 34 then
+                if i = 33 then
+                  some ⟨([1, 2, 11, 12, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 34 then
+                  some ⟨([1, 2, 11, 12, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 38 then
+            if i < 36 then
+              if i = 35 then
+                some ⟨([1, 2, 11, 12, 21, 23] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 37 then
+                if i = 36 then
+                  some ⟨([1, 2, 11, 13, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 37 then
+                  some ⟨([1, 2, 11, 13, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 40 then
+              if i < 39 then
+                if i = 38 then
+                  some ⟨([1, 2, 11, 13, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 39 then
+                  some ⟨([1, 2, 11, 13, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 41 then
+                if i = 40 then
+                  some ⟨([1, 2, 14, 15, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 41 then
+                  some ⟨([1, 2, 14, 15, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+      else
+        if i < 49 then
+          if i < 45 then
+            if i < 43 then
+              if i = 42 then
+                some ⟨([1, 2, 14, 15, 21, 22] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 44 then
+                if i = 43 then
+                  some ⟨([1, 2, 14, 15, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 44 then
+                  some ⟨([1, 2, 14, 16, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 47 then
+              if i < 46 then
+                if i = 45 then
+                  some ⟨([1, 2, 14, 16, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 46 then
+                  some ⟨([1, 2, 14, 16, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 48 then
+                if i = 47 then
+                  some ⟨([1, 2, 14, 16, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 48 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 12, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 52 then
+            if i < 50 then
+              if i = 49 then
+                some ⟨([0, 1, 2, 4, 5, 11, 12, 18, 20] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 51 then
+                if i = 50 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 12, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 51 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 12, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 54 then
+              if i < 53 then
+                if i = 52 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 13, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 53 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 13, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 55 then
+                if i = 54 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 13, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 55 then
+                  some ⟨([0, 1, 2, 4, 5, 11, 13, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+  else
+    if i < 84 then
+      if i < 70 then
+        if i < 63 then
+          if i < 59 then
+            if i < 57 then
+              if i = 56 then
+                some ⟨([0, 1, 2, 4, 5, 14, 15, 18, 19] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 58 then
+                if i = 57 then
+                  some ⟨([0, 1, 2, 4, 5, 14, 15, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 58 then
+                  some ⟨([0, 1, 2, 4, 5, 14, 15, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 61 then
+              if i < 60 then
+                if i = 59 then
+                  some ⟨([0, 1, 2, 4, 5, 14, 15, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 60 then
+                  some ⟨([0, 1, 2, 4, 5, 14, 16, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 62 then
+                if i = 61 then
+                  some ⟨([0, 1, 2, 4, 5, 14, 16, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 62 then
+                  some ⟨([0, 1, 2, 4, 5, 14, 16, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 66 then
+            if i < 64 then
+              if i = 63 then
+                some ⟨([0, 1, 2, 4, 5, 14, 16, 21, 23] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 65 then
+                if i = 64 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 12, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 65 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 12, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 68 then
+              if i < 67 then
+                if i = 66 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 12, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 67 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 12, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 69 then
+                if i = 68 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 13, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 69 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 13, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+      else
+        if i < 77 then
+          if i < 73 then
+            if i < 71 then
+              if i = 70 then
+                some ⟨([0, 1, 2, 4, 6, 11, 13, 21, 22] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 72 then
+                if i = 71 then
+                  some ⟨([0, 1, 2, 4, 6, 11, 13, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 72 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 15, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 75 then
+              if i < 74 then
+                if i = 73 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 15, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 74 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 15, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 76 then
+                if i = 75 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 15, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 76 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 16, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 80 then
+            if i < 78 then
+              if i = 77 then
+                some ⟨([0, 1, 2, 4, 6, 14, 16, 18, 20] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 79 then
+                if i = 78 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 16, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 79 then
+                  some ⟨([0, 1, 2, 4, 6, 14, 16, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 82 then
+              if i < 81 then
+                if i = 80 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 12, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 81 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 12, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 83 then
+                if i = 82 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 12, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 83 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 12, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+    else
+      if i < 98 then
+        if i < 91 then
+          if i < 87 then
+            if i < 85 then
+              if i = 84 then
+                some ⟨([0, 1, 2, 7, 8, 11, 13, 18, 19] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 86 then
+                if i = 85 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 13, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 86 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 13, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 89 then
+              if i < 88 then
+                if i = 87 then
+                  some ⟨([0, 1, 2, 7, 8, 11, 13, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 88 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 15, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 90 then
+                if i = 89 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 15, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 90 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 15, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 94 then
+            if i < 92 then
+              if i = 91 then
+                some ⟨([0, 1, 2, 7, 8, 14, 15, 21, 23] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 93 then
+                if i = 92 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 16, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 93 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 16, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 96 then
+              if i < 95 then
+                if i = 94 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 16, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 95 then
+                  some ⟨([0, 1, 2, 7, 8, 14, 16, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 97 then
+                if i = 96 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 12, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 97 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 12, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+      else
+        if i < 105 then
+          if i < 101 then
+            if i < 99 then
+              if i = 98 then
+                some ⟨([0, 1, 2, 7, 9, 11, 12, 21, 22] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 100 then
+                if i = 99 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 12, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 100 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 13, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 103 then
+              if i < 102 then
+                if i = 101 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 13, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 102 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 13, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 104 then
+                if i = 103 then
+                  some ⟨([0, 1, 2, 7, 9, 11, 13, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 104 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 15, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+        else
+          if i < 108 then
+            if i < 106 then
+              if i = 105 then
+                some ⟨([0, 1, 2, 7, 9, 14, 15, 18, 20] : List Vertex).toFinset, by decide⟩
+              else
+                none
+            else
+              if i < 107 then
+                if i = 106 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 15, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 107 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 15, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+          else
+            if i < 110 then
+              if i < 109 then
+                if i = 108 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 16, 18, 19] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 109 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 16, 18, 20] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+            else
+              if i < 111 then
+                if i = 110 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 16, 21, 22] : List Vertex).toFinset, by decide⟩
+                else
+                  none
+              else
+                if i = 111 then
+                  some ⟨([0, 1, 2, 7, 9, 14, 16, 21, 23] : List Vertex).toFinset, by decide⟩
+                else
+                  none
 
 /--
 For each of the 17,712 candidates, this list gives the zero-based index of one
@@ -896,15 +1676,15 @@ def lowerBoundCoverageWitnesses : List Nat := [
   48, 48, 48, 51, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 48
 ]
 
-/-- Check candidate/witness pairs without performing a 112-way fort search. -/
+/-- Check candidate/witness pairs using the balanced certified selector. -/
 def CoverageWitnessesValidBool :
     List (Finset Vertex) → List Nat → Bool
   | [], [] => true
   | S :: rest, i :: more =>
-      match terminalFortAt i lowerBoundTerminalForts with
+      match terminalFortCertificate i with
       | none => false
-      | some F =>
-          if Disjoint S F then
+      | some cert =>
+          if Disjoint S cert.1 then
             CoverageWitnessesValidBool rest more
           else
             false
@@ -926,19 +1706,18 @@ theorem CoverageWitnessesValidBool.of_mem
       | nil =>
           simp [CoverageWitnessesValidBool] at hvalid
       | cons i more =>
-          cases hfort :
-              terminalFortAt i lowerBoundTerminalForts with
+          cases hfort : terminalFortCertificate i with
           | none =>
               simp [CoverageWitnessesValidBool, hfort] at hvalid
-          | some F =>
-              by_cases hdisj : Disjoint A F
+          | some cert =>
+              by_cases hdisj : Disjoint A cert.1
               · have htail :
                     CoverageWitnessesValidBool rest more = true := by
                   simpa [CoverageWitnessesValidBool, hfort, hdisj] using hvalid
                 simp only [List.mem_cons] at hmem
                 rcases hmem with hEq | hmem
                 · subst S
-                  exact ⟨F, terminalFortAt_mem hfort, hdisj⟩
+                  exact ⟨cert.1, cert.2, hdisj⟩
                 · exact ih htail hmem
               · simp [CoverageWitnessesValidBool, hfort, hdisj] at hvalid
 
