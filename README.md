@@ -1,6 +1,6 @@
 # Fischer Zero-Forcing Counterexample
 
-**Status: formal proof complete; Palomar packaging and mechanical preflight enabled.**
+**Status: formally verified and registered with the Palomar Registry.**
 
 This repository is a tightly scoped Lean 4 formalization of Mikko Fischer's
 explicit 24-vertex counterexample to the zero-forcing-versus-independence
@@ -8,8 +8,22 @@ conjecture for connected subcubic graphs.
 
 The mathematical counterexample is Fischer's result. This repository's
 contribution is a faithful, auditable Lean verification, an independent
-reconstruction of the finite certificates, and Palomar-facing packaging. It
-does **not** claim discovery of the counterexample.
+reconstruction of the finite certificates, and successful Palomar registration.
+It does **not** claim discovery of the counterexample.
+
+## Palomar registration
+
+This formalization was registered with the Palomar Registry on 20 September
+2026 and its verification run completed successfully.
+
+- **Submission:** `PALOMAR-2026-09-20-000009` (version 1)
+- **Repository:** [jfairfaxball-348/Fischer-Zero-Forcing-Counterexample](https://github.com/jfairfaxball-348/Fischer-Zero-Forcing-Counterexample)
+- **Registered commit:** `4ee012d6941e221d294f26520aff92043d715140`
+- **Verification run:** [GitHub Actions run 35521300732](https://github.com/jfairfaxball-348/Fischer-Zero-Forcing-Counterexample/actions/runs/35521300732)
+
+Palomar independently replayed the submitted formal proof against the declared
+comparison configuration. The registration verifies the formalization; it does
+not change the attribution of the underlying mathematical counterexample.
 
 ## Main theorem
 
@@ -81,7 +95,8 @@ The `Palomar Preflight` GitHub Actions workflow invokes Palomar's pinned
 official full mechanical preflight against `comparator.json`. That path
 validates metadata/licensing and runs Comparator with Palomar's protected
 independent NanoDa replay. It is a preflight only; it does not register or
-submit the result.
+submit a result. The registration above records the completed submission and
+successful independent verification.
 
 ## Repository layout
 
