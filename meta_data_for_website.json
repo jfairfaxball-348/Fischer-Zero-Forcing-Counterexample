@@ -5,6 +5,7 @@
   "status": "Palomar verified",
   "headline": "Lean 4 formalisation of Mikko Fischer's 24-vertex zero-forcing counterexample, independently verified by the Palomar Registry.",
   "year": 2026,
+  "date": "2026-09-19",
   "description": "This project formalises Mikko Fischer's explicit 24-vertex connected subcubic counterexample to the zero-forcing-versus-independence conjecture. In Lean 4 it verifies $\\alpha(H)=9$ and $Z(H)=11$, so $Z(H)>\\alpha(H)+1$; the formalisation has been registered and independently verified by the Palomar Registry. The underlying graph and mathematical counterexample are Fischer's; John Fairfax-Ball's contribution is the formalisation, independent finite reconstruction, auditing and verification packaging.",
   "topics": [
     "Graph theory",
