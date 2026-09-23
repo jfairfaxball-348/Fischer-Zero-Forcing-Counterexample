@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "title": "Fischer Zero-Forcing Counterexample",
+  "slug": "fischer-zero-forcing-counterexample",
+  "status": "Palomar verified",
+  "headline": "Lean 4 formalisation of Mikko Fischer's 24-vertex zero-forcing counterexample, independently verified by the Palomar Registry.",
+  "year": 2026,
+  "description": "This project formalises Mikko Fischer's explicit 24-vertex connected subcubic counterexample to the zero-forcing-versus-independence conjecture. In Lean 4 it verifies $\\alpha(H)=9$ and $Z(H)=11$, so $Z(H)>\\alpha(H)+1$; the formalisation has been registered and independently verified by the Palomar Registry. The underlying graph and mathematical counterexample are Fischer's; John Fairfax-Ball's contribution is the formalisation, independent finite reconstruction, auditing and verification packaging.",
+  "topics": [
+    "Graph theory",
+    "Zero forcing",
+    "Formal verification",
+    "Lean 4"
+  ],
+  "github_url": "https://github.com/jfairfaxball-348/Fischer-Zero-Forcing-Counterexample",
+  "palomar_id": "PALOMAR-2026-09-20-000009",
+  "palomar_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-20-000009&version=1",
+  "paper_url": null,
+  "arxiv_id": null,
+  "arxiv_url": null,
+  "doi": null,
+  "formalisation_system": "Lean 4",
+  "verification": "Registered and independently verified by the Palomar Registry.",
+  "attribution": "Counterexample and underlying mathematics: Mikko Fischer. Lean 4 formalisation, independent finite reconstruction, audit and Palomar packaging: John Fairfax-Ball.",
+  "original_source": "https://arxiv.org/abs/2607.23664",
+  "featured": true,
+  "additional_links": []
+}
